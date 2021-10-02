@@ -1,0 +1,22 @@
+<%-include('partials/header.ejs' , {style:"stylesheets/style.css"}) -%>
+<%-include('partials/navbar.ejs') %>
+<div>
+  <% for(let question of questions) { %>
+
+  <div class="card">
+    <div class="card-body">
+      <ul>
+        <li>
+          <b><%=question.statement %></b>- category:<%=question.category%>
+        </li>
+      </ul>
+      <hr />
+
+      <form action="/questions/<%=question._id%>" method="GET">
+        <button>Read More</button>
+      </form>
+    </div>
+  </div>
+
+  <% } %>
+</div>

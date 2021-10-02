@@ -1,0 +1,92 @@
+<%-include('partials/header.ejs' , {style:"stylesheets/style.css"}) -%>
+
+
+<%-include('partials/navbar.ejs') %>
+
+<div class="card">
+  <div class="card-body">
+    <b><%=question.statement %> </b>
+
+    <hr />
+
+    <button
+  type="button"
+  class="btn btn-primary"
+  data-mdb-toggle="modal"
+  data-mdb-target="#exampleModal"
+>
+  Add Answer
+</button>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" >New Answer</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-mdb-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form  action="/newanswer" method="POST">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mb-4">
+                <textarea name="answer"></textarea>
+            <input type="hidden" name="questionId" value="<%=question._id%>" />
+          </div>
+          <button type="submit" value="submit" class="btn btn-primary" style="float: right;">Add Answer</button>
+    </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    
+    
+  </div>
+</div>
+
+<h2>Answers</h2>
+
+<%for(let answer of question.answers){ %>
+
+  <div class="card">
+    <div class="card-body">
+      <b><%- answer.content%></b>
+    </div>
+  </div>
+
+ 
+
+<% } %>
+
+
+
+
+<!-- MDB -->
+<script
+type="text/javascript"
+src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"
+></script>
+
+<script>
+  CKEDITOR.replace('answer',{
+      removePlugins : 'image,link,h1,h2',
+      format_tags: 'p;h4;h5;h6;pre;address;div'
+   }); 
+ </script>
+</body>
+
+</html>
+
+
