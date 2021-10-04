@@ -8,6 +8,9 @@ const path = require("path");
 const Question = require("./models/question");
 const Answer = require("./models/answer");
 
+const ExpressError = require("./utils/ExpressError");
+const catchAsync = require("./utils/catchAsync");
+
 //****** CONNECTING DATABASE****** //
 mongoose.connect("mongodb://localhost:27017/Curiosity", {
   useNewUrlParser: true,
@@ -35,6 +38,10 @@ app.get("/", (req, res) => {
 
 app.get("/about", (req, res) => {
   res.render("about");
+});
+
+app.get("/home", async (req, res) => {
+  res.render("home");
 });
 
 app.get("/questions", async (req, res) => {
@@ -65,6 +72,29 @@ app.post("/newanswer", async (req, res) => {
   res.redirect(`/questions/${questionId}`);
 });
 
+app.post("/askquestion", async (req, res) => {
+  const statement = req.body.statement;
+  const category = req.body.category;
+  const question = new Question({
+    statement: statement,
+    category: category,
+  });
+  await question.save();
+  res.redirect(`/questions?category=${category}`);
+});
+
+app.all("*", (req, res, next) => {
+  next(new ExpressError("Page not Found", 404));
+});
+
+app.use((err, req, res, next) => {
+  const { statusCode = 500 } = err;
+  if (!err.message) err.message = "Oh No , Something Went Wrong";
+  if (err.statusCode === 404) {
+    return res.status(statusCode).render("page404", { err });
+  }
+  res.status(statusCode).render("error", { err });
+});
 app.listen(3000, () => {
   console.log("SERVING ON PORT 3000");
 });
