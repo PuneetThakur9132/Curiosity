@@ -17,11 +17,9 @@ const seedDB = async () => {
   await Question.deleteMany({});
 
   for (let i = 0; i < questions.length; i++) {
-    const random12 = Math.floor(Math.random() * 12);
-
     const question = new Question({
-      statement: questions[random12].statement,
-      category: questions[random12].category,
+      statement: questions[i].statement,
+      category: questions[i].category,
     });
 
     await question.save();
