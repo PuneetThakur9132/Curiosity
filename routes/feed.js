@@ -20,9 +20,20 @@ router.get("/home", async (req, res) => {
 router.get(
   "/questions",
   catchAsync(async (req, res) => {
+    const page = req.query.page || 1;
+
     const category = req.query.category;
-    const questions = await Question.find({ category });
-    res.render("questions", { questions });
+    //calculating total pages
+    const totalQuestions = await Question.countDocuments({ category });
+    const totalPages = Math.ceil(totalQuestions / 10);
+    const questions = await Question.find({ category })
+      .skip((page - 1) * 10)
+      .limit(10);
+    res.render("questions", {
+      questions,
+      totalPages,
+      currentPage: page,
+    });
   })
 );
 
