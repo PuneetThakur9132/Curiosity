@@ -29,46 +29,50 @@
 </div>
 </section>
 
-<section class="pagination">
-  <div class="container">
+<%if (totalPages!==0 && totalPages !== 1){%>
 
-    <nav aria-label="Page navigation example">
-      <ul class="pagination justify-content-center">
-          
-        <%if(Number(currentPage) === 1){%>
-          <li class="page-item disabled">
-            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-          </li>
-        <%} else{ %>
-          <li class="page-item">
-            <a class="page-link" href="?page=<%=Number(currentPage)-1%>&category=<%=stream%>" >Previous</a>
-          </li>
-        <%}%>
-        
-        <%if(totalPages>1){%>
-          <%for(let i=1;i<=totalPages;i++){%>
-           <% if(Number(currentPage)===i){ %>
-            <li class="page-item active aria-current="page"><a class="page-link" href="?page=<%=i%>&category=<%=stream%>"><%=i%><span class="visually-hidden">(current)</span></a></li>
-           <%} else{%>
-            <li class="page-item"><a class="page-link" href="?page=<%=i%>&category=<%=stream%>"><%=i%></a></li>
-            <%}%>
+  <section class="pagination">
+    <div class="container">
+  
+      <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            
+          <%if(Number(currentPage) === 1){%>
+            <li class="page-item disabled">
+              <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+            </li>
+          <%} else{ %>
+            <li class="page-item">
+              <a class="page-link" href="?page=<%=Number(currentPage)-1%>&category=<%=stream%>" >Previous</a>
+            </li>
           <%}%>
-       <%}%>
-       <%if(Number(currentPage)!==Number(totalPages) && Number(totalPages)!== 0){%>
+          
+          <%if(totalPages>1){%>
+            <%for(let i=1;i<=totalPages;i++){%>
+             <% if(Number(currentPage)===i){ %>
+              <li class="page-item active aria-current="page"><a class="page-link" href="?page=<%=i%>&category=<%=stream%>"><%=i%><span class="visually-hidden">(current)</span></a></li>
+             <%} else{%>
+              <li class="page-item"><a class="page-link" href="?page=<%=i%>&category=<%=stream%>"><%=i%></a></li>
+              <%}%>
+            <%}%>
+         <%}%>
+         <%if(Number(currentPage)!==Number(totalPages) && Number(totalPages)!== 0){%>
+          
+          <li class="page-item">
+            <a class="page-link" href="?page=<%=Number(currentPage)+1%>&category=<%= stream%>">Next</a>
+          </li>
+         <%} else{ %>
+          <li class="page-item disabled">
+            <a class="page-link" href='#'>Next</a>
+          </li>
+         <%}%>
         
-        <li class="page-item">
-          <a class="page-link" href="?page=<%=Number(currentPage)+1%>&category=<%= stream%>">Next</a>
-        </li>
-       <%} else{ %>
-        <li class="page-item disabled">
-          <a class="page-link" href='#'>Next</a>
-        </li>
-       <%}%>
-      
-      </ul>
-    </nav>
-  </div>
-</section>
+        </ul>
+      </nav>
+    </div>
+  </section>
+
+<%}%>
 <!-- MDB -->
 <script
 type="text/javascript"

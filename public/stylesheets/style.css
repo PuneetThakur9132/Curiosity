@@ -25,14 +25,20 @@ footer {
   font-size: 20px;
 }
 
+.btn404:hover {
+  transform: scale(1.1);
+  color: white;
+  background-color: green;
+}
+
 /* Question Page */
 .body {
   background-color: #f1f2f2;
 }
-.btn {
+.openanswer {
   background-color: #e7ebeb;
 }
-.btn:hover {
+.openanswer:hover {
   transform: scale(1.05);
   color: #4895ef;
 }
@@ -42,5 +48,5 @@ footer {
 }
 
 .card:hover {
-  box-shadow: 0 0 11px rgba(33, 33, 88, 0.2);
+  box-shadow: 0 0 11px rgba(33, 33, 88, 0.5);
 }
