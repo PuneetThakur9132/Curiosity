@@ -1,0 +1,42 @@
+<%-include('partials/header.ejs' , {style:"stylesheets/style.css"}) -%>
+<%-include('partials/navbar.ejs') %>
+
+<div class="container mt-5">
+  <form action="/askquestion" method="POST">
+
+    <div class="mb-3">
+      <label class="form-label" for="question-type"><b>Enter your Subject of your Questions</b> </label>
+      <select class="form-select form-control-lg" name= "category" id="question-type">
+        <option value="cse">Computer Science Engineering or IT</option>
+        <option value="ece">Electronic and Communication Engineering</option>
+        <option value="ee">Electrical Engineering</option>
+        <option value="me">Mechanical Engineering</option>
+        <option value="ce">Chemical Engineering</option>
+        <option value="ct">Ceramic Technology</option>
+        <option value="lt">Leather Technology</option>
+        <option value="ft">Food Technology</option>
+        <option value="cv">Civil Engineering</option>
+        <option value="ot">Others</option>
+       
+
+      </select>
+    </div>
+    <div class="mb-3">
+      <label class="form-label" for="question"><b>Ask Here</b></label>
+      <input name="statement" type="text" id="question" class="form-control form-control-lg" />
+      
+    </div>
+    <button class="btn btn-primary">Submit</button>
+
+  </form>
+</div>
+
+
+
+<!-- MDB -->
+<script
+  type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"
+></script>
+</body>
+</html>
