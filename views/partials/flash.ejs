@@ -1,19 +1,27 @@
 <%if(success && success.length) { %>
   
-  <div class="alert alert-success alert-dismissible fade show mt-3 w-90" align="center" role="alert">
+ <section class="d-flex justify-content-center">
+  <div class="alert alert-success alert-dismissible fade show mt-3 w-90" align="center" role="alert" style="width:800px;">
 
-    <span ><%= success %></span>
+    <span ><b><%= success %></b></b></span>
     <button type="button" class="close" data-mdb-dismiss="alert" aria-label="Close" style="float:right">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <%} %> <%if(error && error.length) {%>
+ </section>
+  <%} %> 
 
-  <div class="alert alert-danger alert-dismissible fade show" role="alert">
-    <%= error %>
-    <button type="button" class="close" data-mdb-dismiss="alert" aria-label="Close" style="float:right">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
- 
-  <%}%>
+  <section class="d-flex justify-content-center">
+    <%if(error && error.length) {%>
+
+      <div class="alert alert-danger alert-dismissible fade show mt-3"  align="center" role="alert" style="width:800px;">
+        <%= error %>
+        <button type="button" class="close" data-mdb-dismiss="alert" aria-label="Close" style="float:right">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+     
+      <%}%>
+    
+
+  </section>
