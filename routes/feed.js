@@ -42,6 +42,10 @@ router.get(
   catchAsync(async (req, res) => {
     const { id } = req.params;
     const question = await Question.findById(id).populate("answers");
+    if (!question) {
+      req.flash("error", "Cannot find the question");
+      return res.redirect("/questions");
+    }
     res.render("questionPage", { question });
   })
 );
@@ -75,6 +79,7 @@ router.post(
       category: category,
     });
     await question.save();
+    req.flash("success", "Sucessfully added a question");
     res.redirect(`/questions?category=${category}`);
   })
 );
