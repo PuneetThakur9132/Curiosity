@@ -11,7 +11,11 @@ const questionSchema = new Schema(
       type: String,
       required: true,
     },
-
+    author: {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+      required: true,
+    },
     answers: [
       {
         type: Schema.Types.ObjectId,
