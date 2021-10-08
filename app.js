@@ -60,6 +60,7 @@ passport.use(
   new LocalStrategy(
     {
       usernameField: "email",
+      usernameQueryFields: ["email"],
     },
     User.authenticate()
   )

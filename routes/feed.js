@@ -28,6 +28,7 @@ router.get(
     const totalQuestions = await Question.countDocuments({ category });
     const totalPages = Math.ceil(totalQuestions / 10);
     const questions = await Question.find({ category })
+      .populate("author")
       .skip((page - 1) * 10)
       .limit(10);
     res.render("questions", {
@@ -43,12 +44,13 @@ router.get(
   isLoggedIn,
   catchAsync(async (req, res) => {
     const { id } = req.params;
-    const question = await Question.findById(id).populate("answers").populate("author");
+    const question = await Question.findById(id).populate("answers");
     console.log(question);
     if (!question) {
       req.flash("error", "Cannot find the question");
       return res.redirect("/questions");
     }
+    console.log(question);
     res.render("questionPage", { question });
   })
 );
@@ -83,7 +85,7 @@ router.post(
       statement: statement,
       category: category,
     });
-    question.author=req.user._id;
+    question.author = req.user._id;
     await question.save();
     req.flash("success", "Sucessfully added a question");
     res.redirect(`/questions?category=${category}`);

@@ -18,7 +18,7 @@ const seedDB = async () => {
 
   for (let i = 0; i < questions.length; i++) {
     const question = new Question({
-      author:"616011eaba9a68b13d62b03a",
+      author: "61606050497d6a46a0b2d52f",
       statement: questions[i].statement,
       category: questions[i].category,
     });
