@@ -18,9 +18,8 @@ router.post(
       const { email, password, username, branch } = req.body;
       const user = new User({ email, username, branch });
       const registeredUser = await User.register(user, password);
-      console.log(registeredUser);
-      req.flash("success", "Welcome to Curiosity");
-      res.redirect("/questions?page=1&category=cse");
+      req.flash("success", "Successfully registered! Please Login first...");
+      res.redirect("/login");
     } catch (e) {
       req.flash("error", e.message);
       res.redirect("register");
@@ -39,14 +38,13 @@ router.post(
   }),
   (req, res) => {
     req.flash("success", "welcome back!");
-    res.redirect("/questions?page=1&category=cse");
+    res.redirect("/home");
   }
 );
 
 router.get("/logout", (req, res) => {
   req.logout();
-  req.flash("success", "GoodBye!");
-  res.redirect("/questions?page=1&category=cse");
+  res.redirect("/");
 });
 
 module.exports = router;

@@ -40,6 +40,7 @@ router.get(
 
 router.get(
   "/questions/:id",
+  isLoggedIn,
   catchAsync(async (req, res) => {
     const { id } = req.params;
     const question = await Question.findById(id).populate("answers");
