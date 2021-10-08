@@ -31,4 +31,22 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
+router.post(
+  "/login",
+  passport.authenticate("local", {
+    failureFlash: true,
+    failureRedirect: "/login",
+  }),
+  (req, res) => {
+    req.flash("success", "welcome back!");
+    res.redirect("/questions?page=1&category=cse");
+  }
+);
+
+router.get("/logout", (req, res) => {
+  req.logout();
+  req.flash("success", "GoodBye!");
+  res.redirect("/questions?page=1&category=cse");
+});
+
 module.exports = router;

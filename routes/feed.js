@@ -4,6 +4,7 @@ const Question = require("../models/question");
 const Answer = require("../models/answer");
 const ExpressError = require("../utils/ExpressError");
 const catchAsync = require("../utils/catchAsync");
+const { isLoggedIn } = require("../middleware.js");
 
 router.get("/", (req, res) => {
   res.render("index");
@@ -52,6 +53,7 @@ router.get(
 
 router.post(
   "/newanswer",
+  isLoggedIn,
   catchAsync(async (req, res) => {
     const answerContent = req.body.answer;
     const questionId = req.body.questionId;
@@ -71,6 +73,7 @@ router.post(
 
 router.post(
   "/askquestion",
+  isLoggedIn,
   catchAsync(async (req, res) => {
     const statement = req.body.statement;
     const category = req.body.category;
