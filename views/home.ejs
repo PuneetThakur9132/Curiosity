@@ -1,6 +1,11 @@
 <%-include('partials/header.ejs' , {style:"stylesheets/style.css"}) -%>
-<%-include('partials/navbar.ejs') %>
 <%-include("partials/flash.ejs") %>
+
+<% if(isLoggedIn === true){%>
+  <%- include("partials/LoggedNavbar.ejs"); -%>
+<%} else {%>
+  <%- include("partials/navbar.ejs"); -%>
+<%}%>
 
 <div class="container mt-5">
   <form action="/askquestion" method="POST">
