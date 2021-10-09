@@ -4,7 +4,7 @@ const Question = require("../models/question");
 const Answer = require("../models/answer");
 const ExpressError = require("../utils/ExpressError");
 const catchAsync = require("../utils/catchAsync");
-const { isLoggedIn } = require("../middleware.js");
+const { isLoggedIn } = require("../middleware/login");
 
 router.get("/", (req, res) => {
   res.render("index");
@@ -92,12 +92,16 @@ router.post(
   })
 );
 
-router.delete('/question/:id', isLoggedIn, catchAsync(async (req, res) => {
-  const { id } = req.params;
-  const category = req.body.category;
-  await Question.findByIdAndDelete(id);
-  req.flash('success', 'Successfully deleted question')
-  res.redirect(`/questions?category=${category}`);
-}));
+router.delete(
+  "/question/:id",
+  isLoggedIn,
+  catchAsync(async (req, res) => {
+    const { id } = req.params;
+    const category = req.body.category;
+    await Question.findByIdAndDelete(id);
+    req.flash("success", "Successfully deleted question");
+    res.redirect(`/questions?category=${category}`);
+  })
+);
 
 module.exports = router;

@@ -6,6 +6,7 @@ const ExpressError = require("../utils/ExpressError");
 const catchAsync = require("../utils/catchAsync");
 const User = require("../models/user");
 const passport = require("passport");
+const signupValidator = require("../middleware/validators/signup");
 
 router.get("/register", (req, res) => {
   res.render("signup");
@@ -13,6 +14,7 @@ router.get("/register", (req, res) => {
 
 router.post(
   "/register",
+  signupValidator,
   catchAsync(async (req, res, next) => {
     try {
       const { email, password, username, branch } = req.body;
