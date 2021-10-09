@@ -1,7 +1,10 @@
 <%-include('partials/header.ejs' , {style:"stylesheets/style.css"}) -%>
 
-
-<%-include('partials/navbar.ejs') %>
+<% if(isLoggedIn === true){%>
+        <%- include("partials/LoggedNavbar.ejs"); -%>
+  <%} else {%>
+        <%- include("partials/navbar.ejs"); -%>
+  <%}%>
 <%-include("partials/flash.ejs") %>
 
 <h1>THIS IS OUR INDEX PAGE</h1>
