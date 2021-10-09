@@ -1,11 +1,16 @@
 <%-include('partials/header.ejs' , {pageTitle : "CollegeGeeks: :: Questions" ,style:"stylesheets/style.css"}) -%>
+
+<% if(currentUser){%>
+  <%- include("partials/LoggedNavbar.ejs"); -%>
+<%} else {%>
+  <%- include("partials/navbar.ejs"); -%>
+<%}%>
 <%-include("partials/flash.ejs") %>
 
-<% if(isLoggedIn === true){%>
-        <%- include("partials/LoggedNavbar.ejs"); -%>
-<%} else {%>
-        <%- include("partials/navbar.ejs"); -%>
-<%}%>
+
+<%-include("partials/flash.ejs") %>
+
+
 
 <% let stream %>
 

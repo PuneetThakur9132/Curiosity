@@ -1,5 +1,12 @@
 <%-include('partials/header.ejs',{style:"stylesheets/about.css"}) %>
-  <%-include('partials/navbar.ejs') %>
+  
+<% if(currentUser){%>
+  <%- include("partials/LoggedNavbar.ejs"); -%>
+<%} else {%>
+  <%- include("partials/navbar.ejs"); -%>
+<%}%>
+<%-include("partials/flash.ejs") %>
+
 
 
     <div class="float-container">
