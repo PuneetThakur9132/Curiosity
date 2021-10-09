@@ -6,6 +6,7 @@ const ejsMate = require("ejs-mate");
 const session = require("express-session");
 const flash = require("connect-flash");
 const path = require("path");
+const methodOverride = require('method-override');
 
 const Question = require("./models/question");
 const Answer = require("./models/answer");
@@ -37,6 +38,7 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
 app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, "public"))); // for serving static assets
 
 // configuring session

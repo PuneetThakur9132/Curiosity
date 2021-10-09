@@ -92,4 +92,12 @@ router.post(
   })
 );
 
+router.delete('/question/:id', isLoggedIn, catchAsync(async (req, res) => {
+  const { id } = req.params;
+  const category = req.body.category;
+  await Question.findByIdAndDelete(id);
+  req.flash('success', 'Successfully deleted question')
+  res.redirect(`/questions?category=${category}`);
+}));
+
 module.exports = router;
