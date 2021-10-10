@@ -1,27 +1,45 @@
 <%-include('partials/header.ejs' , {style:"stylesheets/style.css"}) -%>
-
 <% if(currentUser){%>
   <%- include("partials/LoggedNavbar.ejs"); -%>
 <%} else {%>
   <%- include("partials/navbar.ejs"); -%>
 <%}%>
+
 <%-include("partials/flash.ejs") %>
 
+<body class="body">
 
-<div class="card">
+<div class="card mb-2 mt-4" >
   <div class="card-body">
-    <b><%=question.statement %> </b>
-
+   <h1> <b><%=question.statement %> </b></h1>
     <hr />
-
-    <button
+<button
+style="float:right"
   type="button"
   class="btn btn-primary"
   data-mdb-toggle="modal"
   data-mdb-target="#exampleModal"
 >
-  Add Answer
+Add Answer
 </button>
+</div>
+</div>
+
+<section class="container">
+    <div class="container">
+     <div class="row">
+       <% for(let answer of question.answers) { %>
+     <div class="card mb-3 mt-3">
+      <div class="card-body">
+        <span style="float: right;"><%= answer.createdAt.toLocaleDateString() %></span>
+        <main><%-answer.content%></main> 
+      </div>
+    </hr>
+    </div>
+  </div>
+  <% } %>
+</div>
+</section>
 
 <!-- Modal -->
 <div
@@ -55,29 +73,8 @@
     </div>
   </div>
 </div>
-
-
-    
-    
-  </div>
 </div>
-
-<h2>Answers</h2>
-
-<%for(let answer of question.answers){ %>
-
-  <div class="card">
-    <div class="card-body">
-      <b><%- answer.content%></b>
-    </div>
-  </div>
-
- 
-
-<% } %>
-
-
-
+</div>
 
 <!-- MDB -->
 <script
