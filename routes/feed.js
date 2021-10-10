@@ -4,7 +4,7 @@ const Question = require("../models/question");
 const Answer = require("../models/answer");
 const ExpressError = require("../utils/ExpressError");
 const catchAsync = require("../utils/catchAsync");
-const { isLoggedIn } = require("../middleware/login");
+const { isLoggedIn } = require("../middleware/loginAuth");
 
 router.get("/", (req, res) => {
   res.render("index");
