@@ -1,4 +1,4 @@
-<%-include('partials/header.ejs' , {pageTitle : "CollegeGeeks: :: Questions" ,style:"stylesheets/style.css"}) -%>
+<%-include('partials/header.ejs' , {style:"stylesheets/style.css"}) -%>
 
 <% if(currentUser){%>
   <%- include("partials/LoggedNavbar.ejs"); -%>
@@ -6,11 +6,6 @@
   <%- include("partials/navbar.ejs"); -%>
 <%}%>
 <%-include("partials/flash.ejs") %>
-
-
-<%-include("partials/flash.ejs") %>
-
-
 
 <% let stream %>
 
@@ -30,9 +25,11 @@
             <b> Category:</b><%=question.category%>
           </li>
         </ul>
+        <% if( currentUser && question.author.equals(currentUser._id)) { %>
         <form class="d-inline" action="/question/<%=question._id%>?_method=DELETE" method="POST">
           <button class="btn btn-danger">Delete</button>
       </form>
+      <% } %> 
        <form action="/questions/<%=question._id%>" method="GET">
         <button style="float: right;" class="openanswer btn btn-sm btn-light rounded-pill m-2 right">Read more</button>
         </form>
