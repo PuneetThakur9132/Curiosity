@@ -15,7 +15,7 @@ const userSchema = new Schema(
       unique: true,
     },
     emailToken: String,
-    isVerified: String,
+    isVerified: Boolean,
     branch: {
       type: String,
       required: true,
