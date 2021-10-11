@@ -13,8 +13,8 @@ module.exports = (email, token) => {
   });
 
   let mailOptions = {
-    from: "ankitsi9132@gmail.com",
-    to: email,
+    from: "gaminggaming5777@gmail.com",
+    to: "gaminggaming5777@gmail.com",
     subject: "Email-verification",
     text: `Hello , thanks for registering on our site.
   Please copy and paste the address below to verify your account.
