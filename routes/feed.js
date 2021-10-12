@@ -5,6 +5,8 @@ const Answer = require("../models/answer");
 const ExpressError = require("../utils/ExpressError");
 const catchAsync = require("../utils/catchAsync");
 const { isLoggedIn } = require("../middleware/loginAuth");
+const newQuestionValidator = require("../middleware/validators/newQuestion");
+const getQuestionValidator = require("../middleware/validators/getQuestion");
 
 router.get("/", (req, res) => {
   res.render("index");
@@ -20,6 +22,7 @@ router.get("/home", async (req, res) => {
 
 router.get(
   "/questions",
+  getQuestionValidator,
   catchAsync(async (req, res) => {
     const page = req.query.page || 1;
 
@@ -42,6 +45,7 @@ router.get(
 router.get(
   "/questions/:id",
   isLoggedIn,
+  getQuestionValidator,
   catchAsync(async (req, res) => {
     const { id } = req.params;
     const question = await Question.findById(id).populate("answers");
@@ -78,6 +82,7 @@ router.post(
 router.post(
   "/askquestion",
   isLoggedIn,
+  newQuestionValidator,
   catchAsync(async (req, res) => {
     const statement = req.body.statement;
     const category = req.body.category;
