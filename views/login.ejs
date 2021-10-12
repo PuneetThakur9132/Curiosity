@@ -4,27 +4,53 @@
 
 <section class="mt-5">
   <div class="container">
-    <form action="/login" method="POST">
+    <form class="row g-3 needs-validation" novalidate action="/login" method="POST">
       
       <div class="mb-3">
         <label class="form-label" for="email"><b>Email</b></label>
-        <input name="email" type="text" id="email" class="form-control form-control-lg" />
+        <input name="email" type="text" id="email" class="form-control form-control-lg" / required>
+        <div class="invalid-feedback">
+        Please enter Email.
+        </div>
       </div>
   
       <div class="mb-3">
         <label class="form-label" for="password"><b>Password</b></label>
-        <input name="password" type="password" id="password" class="form-control form-control-lg" />
+        <input name="password" type="password" id="password" class="form-control form-control-lg" / required>
+        <div class="invalid-feedback">
+          Please enter Password.
+        </div>
       </div>
   
-      <button class="btn btn-success">login</button>
+      <div class="col-12">
+        <button class="btn btn-primary" type="submit">Login</button>
+      </div>
   
       
     </form>
   </div>
 </section>
 
+<script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(() => {
+  'use strict';
 
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.needs-validation');
 
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms).forEach((form) => {
+    form.addEventListener('submit', (event) => {
+      if (!form.checkValidity()) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+      form.classList.add('was-validated');
+    }, false);
+  });
+})();
+</script>
 
 
 
