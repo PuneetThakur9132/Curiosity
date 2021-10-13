@@ -1,12 +1,13 @@
 <%if(success && success.length) { %>
   
  <section class="d-flex justify-content-center">
-  <div class="alert alert-success alert-dismissible fade show mt-3 w-90" align="center" role="alert" style="width:800px;">
+  <div class="alert alert-success alert-dismissible fade show mt-3 w-90" align="center" role="alert" style="width:1000px;">
 
-    <span ><b><%= success %></b></b></span>
     <button type="button" class="close" data-mdb-dismiss="alert" aria-label="Close" style="float:right">
       <span aria-hidden="true">&times;</span>
     </button>
+    <span ><b><%= success %></b></b></span>
+    
   </div>
  </section>
   <%} %> 
@@ -14,11 +15,12 @@
   <section class="d-flex justify-content-center">
     <%if(error && error.length) {%>
 
-      <div class="alert alert-danger alert-dismissible fade show mt-3"  align="center" role="alert" style="width:800px;">
-        <b><%= error %></b>
-        <button type="button" class="close" data-mdb-dismiss="alert" aria-label="Close" style="float:right">
+      <div class="alert alert-danger alert-dismissible fade show mt-3"  align="center" role="alert" style="width:1000px;">
+        <button type="button" class="close sticky-top" data-mdb-dismiss="alert" aria-label="Close" style="float:right">
           <span aria-hidden="true">&times;</span>
         </button>
+        <b><%= error %></b>
+        
       </div>
      
       <%}%>

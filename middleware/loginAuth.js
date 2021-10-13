@@ -10,6 +10,9 @@ module.exports.isLoggedIn = (req, res, next) => {
 
 module.exports.isnotVerified = async (req, res, next) => {
   const user = await User.findOne({ email: req.body.email });
+  if (!user) {
+    return next();
+  }
   console.log(user);
   if (user.isVerified) {
     return next();
