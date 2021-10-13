@@ -50,3 +50,15 @@ footer {
 .card:hover {
   box-shadow: 0 0 11px rgba(33, 33, 88, 0.5);
 }
+
+/* Login Page */
+.divider:after,
+.divider:before {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #eee;
+}
+.h-custom {
+  height: calc(100% - 73px);
+}
