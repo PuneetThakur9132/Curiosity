@@ -7,7 +7,8 @@ const passport = require("passport");
 const crypto = require("crypto");
 const sendEmail = require("../utils/sendEmail");
 const jwt = require("jsonwebtoken");
-const sendEmailForgot = require("../utils/sendEmailForgot");
+const genText = require("../texts/verifyEmail");
+const genForgotPasswordText = require("../texts/forgotPasswordText");
 
 const JWT_SECRET = process.env.JWT_SECRET;
 
@@ -27,7 +28,8 @@ module.exports.postSignup = async (req, res, next) => {
     });
     const registeredUser = await User.register(user, password);
     // if user registered successfully
-    const result = await sendEmail(req.body.email, registeredUser.emailToken);
+    const text = genText(registeredUser.emailToken);
+    const result = await sendEmail(req.body.email, text);
 
     res.render("verification");
   } catch (e) {
@@ -86,7 +88,8 @@ module.exports.postforgotPassword = async (req, res) => {
     id: user._id,
   };
   const token = jwt.sign(payload, secret, { expiresIn: "10m" });
-  const result = await sendEmailForgot(req.body.email, user._id, token);
+  const text = genForgotPasswordText(user._id, token);
+  const result = await sendEmail(req.body.email, text);
   res.send("Password reset link has been sent to ur email...");
 };
 
