@@ -41,4 +41,7 @@ router.delete(
   catchAsync(feedController.deleteQuestion)
 );
 
+router.get("/myaccount", isLoggedIn, feedController.getMyAccount);
+router.get("/Editprofile", isLoggedIn, feedController.getEditprofile);
+
 module.exports = router;
