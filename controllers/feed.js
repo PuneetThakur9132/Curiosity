@@ -72,6 +72,15 @@ module.exports.postAskQuestion = async (req, res) => {
   res.redirect(`/questions?category=${category}`);
 };
 
+
+module.exports.getMyAccount = (req, res, next) => {
+  res.render("myaccount");
+}
+
+exports.getEditprofile = (req, res, next) => {
+  res.render("Editprofile");
+};
+
 module.exports.deleteQuestion = async (req, res) => {
   const { id } = req.params;
   const deletedQuestion = await Question.findByIdAndDelete(id);
