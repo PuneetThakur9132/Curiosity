@@ -38,8 +38,9 @@ const userSchema = new Schema(
     questions: [{ type: Schema.Types.ObjectId, ref: "Question" }],
     answers: [{ type: Schema.Types.ObjectId, ref: "Answer" }],
     followers: [{ type: Schema.Types.ObjectId, ref: "User" }],
-    likedQuestions: [{ type: Schema.Types.ObjectId }],
-    likedAnswers: [{ type: Schema.Types.ObjectId }],
+    likedQuestions: [{ type: Schema.Types.ObjectId, ref: "Question"  }],
+    likedAnswers: [{ type: Schema.Types.ObjectId, ref: "Answer" }],
+    answeredQuestions: [{ type: Schema.Types.ObjectId, ref: "Question" }],
     followings: [{ type: Schema.Types.ObjectId, ref: "User" }],
   },
   { timestamps: true }
