@@ -5,6 +5,8 @@ const catchAsync = require("../utils/catchAsync");
 const { isLoggedIn } = require("../middleware/loginAuth");
 const newQuestionValidator = require("../middleware/validators/newQuestion");
 const getQuestionValidator = require("../middleware/validators/getQuestion");
+const getHomePageValidator = require("../middleware/validators/getHome");
+
 const feedController = require("../controllers/feed");
 
 router.get("/", feedController.getLandingPage);
@@ -44,5 +46,7 @@ router.delete(
 router.get("/PublicProfile", isLoggedIn, feedController.getPublicProfile);
 router.get("/myaccount", isLoggedIn, feedController.getMyAccount);
 router.get("/Editprofile", isLoggedIn, feedController.getEditprofile);
+router.get("/userActivity", isLoggedIn, feedController.getUserActivity);
+router.get("/home", isLoggedIn, getHomePageValidator, feedController.getHomePage);
 
 module.exports = router;
