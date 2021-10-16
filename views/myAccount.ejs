@@ -8,13 +8,6 @@
   
 <%-include("partials/flash.ejs") %>
 
-    <p>followings ::: <%=profile.followings%></p>
-    <p>answeredQuestions ::: <%=profile.answeredQuestions%></p>
-    <p>answers ::: <%=profile.answers%></p>
-    <p>likedAnswers ::: <%=profile.likedAnswers%></p>
-    <p>followers ::: <%=profile.followers%></p>
-    <p>questions ::: <%=profile.questions%></p>
-
 <section class="my_acc">
     <div class="container">
         <div class="row">
@@ -61,8 +54,8 @@
                                     </tr>
                                     <tr>
                                       <td>10</td>
-                                      <td>10</td>
-                                      <td>10</td>
+                                      <td><%=profile.answers%></td>
+                                      <td><%=profile.questions%></td>
                                     </tr>
                                   </tbody>
                             </table>

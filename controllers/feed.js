@@ -54,6 +54,8 @@ module.exports.getQuestion = async (req, res) => {
 };
 
 module.exports.postNewAnswer = async (req, res) => {
+  const userId = req.user._id;
+  const user = await User.findById(userId);
   const answerContent = req.body.answer;
   const questionId = req.body.questionId;
 
@@ -65,11 +67,14 @@ module.exports.postNewAnswer = async (req, res) => {
   await answer.save();
   question.answers.push(answer);
   await question.save();
-  console.log(question);
+  user.answers.push(answer);
+  await user.save();
   res.redirect(`/questions/${questionId}`);
 };
 
 module.exports.postAskQuestion = async (req, res) => {
+  const userId = req.user._id;
+  const user = await User.findById(userId);
   const statement = req.body.statement;
   const category = req.body.category;
   const question = new Question({
@@ -78,6 +83,8 @@ module.exports.postAskQuestion = async (req, res) => {
   });
   question.author = req.user._id;
   await question.save();
+  user.questions.push(question);
+  await user.save();
   req.flash("success", "Sucessfully added a question");
   res.redirect(`/questions?category=${category}`);
 };
@@ -86,10 +93,10 @@ module.exports.getProfile = async (req, res, next) => {
   try {
     const userId = req.user._id;
 
-    const user = await User.findById(userId).select("-password");
+    const user = await User.findById(userId);
     if (!user) {
-      const error = new Error("No user is found");
-      throw error;
+      req.flash("error", "User Not Found..!");
+      res.redirect("/myaccount");
     }
     //console.log(user);
     const profile = {

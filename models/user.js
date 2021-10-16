@@ -14,15 +14,11 @@ const userSchema = new Schema(
       required: true,
       unique: true,
     },
-    password: {
-      type: String,
-      required: String,
-    },
     branch: {
       type: String,
       required: true,
     },
-    
+
     emailToken: String,
     isVerified: Boolean,
 
@@ -34,11 +30,11 @@ const userSchema = new Schema(
       type: String,
       default: "",
     },
-    
+
     questions: [{ type: Schema.Types.ObjectId, ref: "Question" }],
     answers: [{ type: Schema.Types.ObjectId, ref: "Answer" }],
     followers: [{ type: Schema.Types.ObjectId, ref: "User" }],
-    likedQuestions: [{ type: Schema.Types.ObjectId, ref: "Question"  }],
+    likedQuestions: [{ type: Schema.Types.ObjectId, ref: "Question" }],
     likedAnswers: [{ type: Schema.Types.ObjectId, ref: "Answer" }],
     answeredQuestions: [{ type: Schema.Types.ObjectId, ref: "Question" }],
     followings: [{ type: Schema.Types.ObjectId, ref: "User" }],
