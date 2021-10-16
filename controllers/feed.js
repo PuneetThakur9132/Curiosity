@@ -86,7 +86,11 @@ module.exports.getMyAccount = (req, res, next) => {
   res.render("myaccount");
 };
 
-exports.getEditprofile = (req, res, next) => {
+module.exports.getPublicProfile = (req, res, next) => {
+  res.render("PublicProfile");
+};
+
+module.exports.getEditprofile = (req, res, next) => {
   res.render("Editprofile");
 };
 

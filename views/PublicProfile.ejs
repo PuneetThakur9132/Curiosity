@@ -1,11 +1,5 @@
 <%-include('partials/header.ejs' , {style:"stylesheets/style.css"}) -%>
-
-<% if(currentUser){%>
-    <%- include("partials/LoggedNavbar.ejs"); -%>
-  <%} else {%>
-    <%- include("partials/navbar.ejs"); -%>
-  <%}%>
-  
+<%- include("partials/LoggedNavbar.ejs",{Profile: "Profile"});  -%>
 <%-include("partials/flash.ejs") %>
 
 <section class="my_acc">
@@ -18,7 +12,7 @@
                 
                 <div class="row">
                     <div class = "my_background rounded">
-                        <a href="/Editprofile" style="float:right"><button class="edit_profile btn btn-sm btn-secondary" type="submit">Edit Profile</button></a>
+                        <a href="/Editprofile" style="float:right"><button class="follow btn btn-sm btn-secondary" type="submit">Follow</button></a>
                     </div>
                 
                     <input type="file" id="actual-btn" hidden>
@@ -106,23 +100,6 @@
 </section>
 
 
-<section class="my_acc_body">
-    <div class="container">
-        <div class="row">
-            <div class="mdl-card">
-                <div class="card-body">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="card-title"><h4>INFO</h4></div><hr>
-                            <canvas id="myChart"></canvas>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> 
-    </section>
 
 
 <!-- MDB -->

@@ -41,6 +41,7 @@ router.delete(
   catchAsync(feedController.deleteQuestion)
 );
 
+router.get("/PublicProfile", isLoggedIn, feedController.getPublicProfile);
 router.get("/myaccount", isLoggedIn, feedController.getMyAccount);
 router.get("/Editprofile", isLoggedIn, feedController.getEditprofile);
 

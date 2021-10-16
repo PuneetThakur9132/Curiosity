@@ -14,14 +14,33 @@ const userSchema = new Schema(
       required: true,
       unique: true,
     },
-    emailToken: String,
-    isVerified: Boolean,
+    password: {
+      type: String,
+      required: String,
+    },
     branch: {
       type: String,
       required: true,
     },
+    
+    emailToken: String,
+    isVerified: Boolean,
+
+    intro: {
+      type: String,
+      default: "Hello! I am new to Curiosity.",
+    },
+    dp: {
+      type: String,
+      default: "",
+    },
+    
     questions: [{ type: Schema.Types.ObjectId, ref: "Question" }],
     answers: [{ type: Schema.Types.ObjectId, ref: "Answer" }],
+    followers: [{ type: Schema.Types.ObjectId, ref: "User" }],
+    likedQuestions: [{ type: Schema.Types.ObjectId }],
+    likedAnswers: [{ type: Schema.Types.ObjectId }],
+    followings: [{ type: Schema.Types.ObjectId, ref: "User" }],
   },
   { timestamps: true }
 );

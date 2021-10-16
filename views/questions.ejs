@@ -19,7 +19,8 @@
       <div class="card-body">
         <span style="float: right;"><%= question.createdAt.toLocaleDateString() %></span>
         <div class="card-title " ><h5 style="font-size:25px;"><%= question.statement%>?</h5> </div><hr>
-        <div class="card-title " ><h5 style="font-size:16px;">Submitted By:<%= question.author.username%></h5> </div><hr>
+        <div class="card-title " ><h5 style="font-size:16px;">Submitted By:<a href="/PublicProfile"><%=question.author.username %></a></h5> </div><hr>
+        
         <ul>
           <li>
              Category:<b><%=question.category%></b>
