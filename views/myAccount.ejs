@@ -1,7 +1,5 @@
 <%-include('partials/header.ejs' , {style:"stylesheets/style.css"}) -%>
 
-<%- include("partials/LoggedNavbar.ejs",{Profile: "Profile"});  -%>
-
 <% if(currentUser){%>
     <%- include("partials/LoggedNavbar.ejs"); -%>
   <%} else {%>
