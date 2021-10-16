@@ -93,6 +93,9 @@ module.exports.getPublicProfile = (req, res, next) => {
 module.exports.getEditprofile = (req, res, next) => {
   res.render("Editprofile");
 };
+module.exports.getUserActivity = (req, res, next) => {
+  res.render("userActivity");
+};
 
 module.exports.deleteQuestion = async (req, res) => {
   const { id } = req.params;
