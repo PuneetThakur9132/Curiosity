@@ -1,5 +1,12 @@
 <%-include('partials/header.ejs' , {style:"stylesheets/style.css"}) -%>
-<%- include("partials/navbar.ejs",{Profile: "Profile"});  -%>
+
+<% if(currentUser){%>
+    <%- include("partials/LoggedNavbar.ejs"); -%>
+  <%} else {%>
+    <%- include("partials/navbar.ejs"); -%>
+  <%}%>
+  
+
 <%-include("partials/flash.ejs") %>
 
 <section class="my_acc">

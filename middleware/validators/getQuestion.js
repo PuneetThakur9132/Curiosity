@@ -15,9 +15,9 @@ module.exports = (req, res, next) => {
       category !== "me" &&
       category !== "ce" &&
       category !== "ct" &&
-      category !== "ece" &&
       category !== "lt" &&
       category !== "ft" &&
+      category !== "cv" &&
       category !== "ot"
     ) {
       req.flash("error", "Invalid category");
