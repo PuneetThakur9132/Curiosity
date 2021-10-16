@@ -82,8 +82,31 @@ module.exports.postAskQuestion = async (req, res) => {
   res.redirect(`/questions?category=${category}`);
 };
 
-module.exports.getMyAccount = (req, res, next) => {
-  res.render("myaccount");
+module.exports.getProfile = async (req, res, next) => {
+  try {
+    const userId = req.user._id;
+
+    const user = await User.findById(userId).select("-password");
+    if (!user) {
+      const error = new Error("No user is found");
+      throw error;
+    }
+    //console.log(user);
+    const profile = {
+      ...user._doc,
+      questions: user.questions.length,
+      followers: user.followers.length,
+      likedQuestions: user.likedQuestions.length,
+      likedAnswers: user.likedAnswers.length,
+      answers: user.answers.length,
+      followings: user.followings.length,
+      answeredQuestions: user.answeredQuestions.length,
+    };
+    console.log(profile);
+    res.render("myaccount", { profile });
+  } catch (err) {
+    next(err);
+  }
 };
 
 module.exports.getPublicProfile = (req, res, next) => {
