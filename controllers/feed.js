@@ -1,5 +1,6 @@
 const Question = require("../models/question");
 const Answer = require("../models/answer");
+const User = require("../models/user");
 
 module.exports.getLandingPage = (req, res) => {
   res.render("index");
@@ -10,7 +11,16 @@ module.exports.getAboutPage = (req, res) => {
 };
 
 module.exports.getHomePage = async (req, res) => {
-  res.render("home");
+  if (!req.user) {
+    res.render("index");
+  }
+  const category = req.user.branch;
+  const questions = await Question.find({ category });
+  if (!questions) {
+    req.flash("error", "Cannot Find any question");
+    return res.redirect("/home");
+  }
+  res.render("home", { questions });
 };
 
 module.exports.getQuestions = async (req, res) => {
@@ -72,10 +82,9 @@ module.exports.postAskQuestion = async (req, res) => {
   res.redirect(`/questions?category=${category}`);
 };
 
-
 module.exports.getMyAccount = (req, res, next) => {
   res.render("myaccount");
-}
+};
 
 exports.getEditprofile = (req, res, next) => {
   res.render("Editprofile");
