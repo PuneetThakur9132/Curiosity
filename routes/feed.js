@@ -54,7 +54,7 @@ router.get(
   feedController.getHomePage
 );
 
-router.get("/follow/:id", isAuthAPI, feedController.follow);
+router.get("/follow/:id", isLoggedIn , feedController.follow);
 router.get("/userActivity", isLoggedIn, feedController.getActivity);
 router.get("/myaccount", isLoggedIn, feedController.getProfile);
 
