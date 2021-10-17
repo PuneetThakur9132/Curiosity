@@ -1,6 +1,7 @@
 const Question = require("../models/question");
 const Answer = require("../models/answer");
 const User = require("../models/user");
+const ExpressError = require("../utils/ExpressError");
 
 module.exports.getLandingPage = (req, res) => {
   res.render("index");
@@ -34,6 +35,7 @@ module.exports.getQuestions = async (req, res) => {
     .populate("author")
     .skip((page - 1) * 10)
     .limit(10);
+
   res.render("questions", {
     questions,
     totalPages,
@@ -43,7 +45,9 @@ module.exports.getQuestions = async (req, res) => {
 
 module.exports.getQuestion = async (req, res) => {
   const { id } = req.params;
-  const question = await Question.findById(id).populate("answers");
+  const question = await Question.findById(id)
+    .populate("answers")
+    .populate("author");
   console.log(question);
   if (!question) {
     req.flash("error", "Cannot find the question");
@@ -116,8 +120,34 @@ module.exports.getProfile = async (req, res, next) => {
   }
 };
 
-module.exports.getPublicProfile = (req, res, next) => {
-  res.render("PublicProfile");
+module.exports.getPublicProfile = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const userId = req.user._id;
+
+    // If the userId is equals to id , then redirect to myacccount..
+    if (userId.equals(id)) {
+      return res.redirect("/myaccount");
+    }
+
+    const publicUser = await User.findById(id).select(
+      " -likedQuestions -likedAnswers  -answeredQuestions"
+    );
+    if (!publicUser) {
+      next(new ExpressError("User not found"));
+    }
+
+    const publicUserDetails = {
+      ...publicUser._doc,
+      questions: publicUser.questions.length,
+      followers: publicUser.followers.length,
+      followings: publicUser.followings.length,
+      answers: publicUser.answers.length,
+    };
+    res.render("PublicProfile", { profile: publicUserDetails });
+  } catch (e) {
+    next(e);
+  }
 };
 
 module.exports.getEditprofile = (req, res, next) => {

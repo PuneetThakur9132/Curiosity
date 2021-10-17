@@ -43,11 +43,16 @@ router.delete(
   catchAsync(feedController.deleteQuestion)
 );
 
-router.get("/PublicProfile", isLoggedIn, feedController.getPublicProfile);
+router.get("/PublicProfile/:id", isLoggedIn, feedController.getPublicProfile);
 
 router.get("/Editprofile", isLoggedIn, feedController.getEditprofile);
 router.get("/userActivity", isLoggedIn, feedController.getUserActivity);
-router.get("/home", isLoggedIn, getHomePageValidator, feedController.getHomePage);
+router.get(
+  "/home",
+  isLoggedIn,
+  getHomePageValidator,
+  feedController.getHomePage
+);
 
 router.get("/myaccount", isLoggedIn, feedController.getProfile);
 

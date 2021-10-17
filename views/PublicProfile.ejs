@@ -21,8 +21,8 @@
             </div>
             
             <div class="usename">
-                    <span class="display-6">UserName</span>
-                    <p>Bio</p>
+                    <span class="display-6"><%=profile.username%></span>
+                    <p><%=profile.intro%></p>
             </div>
         </div>
     </div>  
@@ -48,8 +48,8 @@
                                     </tr>
                                     <tr>
                                       <td>10</td>
-                                      <td>10</td>
-                                      <td>10</td>
+                                      <td><%=profile.answers%></td>
+                                      <td><%=profile.questions%></td>
                                     </tr>
                                   </tbody>
                             </table>
@@ -75,19 +75,15 @@
                                   <tbody>
                                     <tr>
                                       <td><b>Name</b></td>
-                                      <td><b>UserName</b></td>
+                                      <td><b><%=profile.username%></b></td>
                                     </tr>
                                     <tr>
                                     <td><b>Stream</b></td>
-                                    <td><b>CSE</b></td>
+                                    <td><b><%=profile.branch%></b></td>
                                     </tr>
                                     <tr>
                                         <td><b>Email</b></td>
-                                        <td><b>UserEmail</b></td>
-                                    </tr>
-                                    <tr>
-                                        <td><b>College</b></td>
-                                        <td><b>College</b></td>
+                                        <td><b><%=profile.email%></b></td>
                                     </tr>
                                   </tbody>
                             </table>
