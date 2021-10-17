@@ -133,8 +133,10 @@ module.exports.getPublicProfile = async (req, res, next) => {
     const publicUser = await User.findById(id).select(
       " -likedQuestions -likedAnswers  -answeredQuestions"
     );
+
+    const user = await User.findById(userId).select("followings");
     if (!publicUser) {
-      next(new ExpressError("User not found"));
+      return next(new ExpressError("User not found"));
     }
 
     const publicUserDetails = {
@@ -144,7 +146,12 @@ module.exports.getPublicProfile = async (req, res, next) => {
       followings: publicUser.followings.length,
       answers: publicUser.answers.length,
     };
-    res.render("PublicProfile", { profile: publicUserDetails });
+    const isFound = user.followings.find((followingUser) =>
+      followingUser.equals(id)
+    );
+
+    const isFollowing = isFound === undefined ? false : true;
+    res.render("PublicProfile", { profile: publicUserDetails, isFollowing });
   } catch (e) {
     next(e);
   }
@@ -157,63 +164,86 @@ module.exports.getUserActivity = (req, res, next) => {
   res.render("userActivity");
 };
 
+//follow
+
 module.exports.follow = async (req, res, next) => {
   try {
     const { id } = req.params;
     const userId = req.user._id;
 
-    if (userId === undefined) {
-      const error = new Error("No userId found!");
-      error.statusCode(404);
-      throw error;
-    }
-
-    if (id === userId) {
-      const error = new Error("Can not follow himself/herself");
-      error.statusCode = 400;
-      throw error;
-    }
-
-    const followerUser = await User.findById(id).select("followings");
-    const followingUser = await User.findById(userId).select("followers");
+    const followerUser = await User.findById(userId).select("followings");
+    const followingUser = await User.findById(id).select("followers");
 
     if (!followerUser || !followingUser) {
-      const error = new Error("User not found!");
-      error.statusCode = 404;
-      throw error;
+      return next(new ExpressError("User not Found", 404));
     }
 
-    const isFollowing = followerUser.followings.find(
-      (followingUserId) => followingUserId == userId
+    const isFollowing = followerUser.followings.findIndex((followingUserId) =>
+      followingUserId.equals(id)
     );
-    //If the user is already following
-    if (isFollowing !== undefined) {
-      const error = new Error("Already following this user");
-      error.statusCode = 422;
-      throw error;
+
+    // if user is already following
+    if (isFollowing !== -1) {
+      return next(new ExpressError("Already following this user", 422));
     }
-    //If the user is not following already
-    const updatedFollowings = followerUser.followings;
-    updatedFollowings.push(userId);
-    followerUser.followings = updatedFollowings;
 
-    const updatedFollowers = followingUser.followers;
-    updatedFollowers.push(id);
-    followingUser.followers = updatedFollowers;
+    //if user is not following
 
-    const updatedFollowerUser = await followerUser.save();
-    const updatedFollowingUser = await followingUser.save();
+    followingUser.followers.push(userId);
+    await followingUser.save();
 
-    res.status(200).json({
-      message: "successfull",
-    });
-  } catch (err) {
-    if (!err.statusCode) {
-      err.statusCode = 500;
+    followerUser.followings.push(id);
+    await followerUser.save();
+
+    console.log("followerUser...", followerUser);
+    console.log("followingUser...", followingUser);
+
+    req.flash("success", "Successfully followed");
+    res.redirect(`/PublicProfile/${id}`);
+  } catch (e) {
+    next(e);
+  }
+};
+
+//unfollow
+
+module.exports.unfollow = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const userId = req.user._id;
+
+    if (id === undefined) {
+      return next(new ExpressError("No user Found", 404));
     }
-    res.status(err.statusCode).json({
-      message: err.message,
-    });
+    const followerUser = await User.findById(userId).select("followings");
+    const followingUser = await User.findById(id).select("followers");
+
+    if (!followerUser || !followingUser) {
+      return next(new ExpressError("No user Found", 404));
+    }
+
+    const followingIndex = followerUser.followings.findIndex(
+      (followingUserId) => followingUserId.equals(id)
+    );
+
+    const followerIndex = followingUser.followers.findIndex((followerUserId) =>
+      followerUserId.equals(userId)
+    );
+
+    if (followingIndex === -1 || followerIndex === -1) {
+      return next(new ExpressError("First follow to Unfollow", 422));
+    }
+
+    followerUser.followings.splice(followingIndex, 1);
+    followingUser.followers.splice(followerIndex, 1);
+
+    await followerUser.save();
+    await followingUser.save();
+
+    req.flash("success", "Successfully..Unfollowed");
+    res.redirect(`/PublicProfile/${id}`);
+  } catch (e) {
+    next(e);
   }
 };
 

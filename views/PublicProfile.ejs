@@ -12,7 +12,12 @@
                 
                 <div class="row">
                     <div class = "my_background rounded">
-                        <a href="#" style="float:right"><button class="follow btn btn-sm btn-secondary" type="submit">Follow</button></a>
+                        <%if(isFollowing === false){%>
+
+                            <a href="/follow/<%=profile._id%>" style="float:right"><button class="follow btn btn-sm btn-secondary" type="submit">Follow</button></a>
+                        <%} else {%>
+                            <a href="/unfollow/<%=profile._id%>" style="float:right"><button class="follow btn btn-sm btn-secondary" type="submit">Unfollow</button></a>
+                        <%}%>
                     </div>
                 
                     <input type="file" id="actual-btn" hidden>
@@ -47,7 +52,7 @@
                                       <td><b>Asked</b></td>
                                     </tr>
                                     <tr>
-                                      <td>10</td>
+                                      <td><%=profile.followers%></td>
                                       <td><%=profile.answers%></td>
                                       <td><%=profile.questions%></td>
                                     </tr>

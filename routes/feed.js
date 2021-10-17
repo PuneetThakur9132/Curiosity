@@ -6,7 +6,6 @@ const { isLoggedIn } = require("../middleware/loginAuth");
 const newQuestionValidator = require("../middleware/validators/newQuestion");
 const getQuestionValidator = require("../middleware/validators/getQuestion");
 const getHomePageValidator = require("../middleware/validators/getHome");
-const isAuthAPI = require("../middleware/isAuthAPI");
 
 const feedController = require("../controllers/feed");
 
@@ -55,7 +54,9 @@ router.get(
   feedController.getHomePage
 );
 
-router.get("/follow", isAuthAPI, feedController.follow);
+router.get("/follow/:id", isLoggedIn, feedController.follow);
+
+router.get("/unfollow/:id", isLoggedIn, feedController.unfollow);
 
 router.get("/myaccount", isLoggedIn, feedController.getProfile);
 
