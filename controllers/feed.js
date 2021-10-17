@@ -64,15 +64,28 @@ module.exports.postNewAnswer = async (req, res) => {
   const questionId = req.body.questionId;
 
   const question = await Question.findById(questionId);
-  const answer = new Answer({
-    content: answerContent,
+  //Creating a new answer doc
+  const newAnswer = new Answer({
+   content: answerContent,
     question: questionId,
   });
-  await answer.save();
-  question.answers.push(answer);
-  await question.save();
-  user.answers.push(answer);
-  await user.save();
+
+  const answer = await newAnswer.save();
+  //connecting docs
+  const updatedAnswers = question.answers;
+  updatedAnswers.push(answer);
+  question.answers = updatedAnswers;
+
+  const updatedUserAnswers = user.answers;
+  updatedUserAnswers.push(answer);
+  user.answers = updatedUserAnswers;
+
+  const updatedAnsweredQuestions = user.answeredQuestions;
+  updatedAnsweredQuestions.push(questionId);
+  user.answeredQuestions = updatedAnsweredQuestions;
+
+  const updatedUser = await user.save();
+  const updatedQuestion = await question.save();
   res.redirect(`/questions/${questionId}`);
 };
 
@@ -216,6 +229,30 @@ module.exports.follow = async (req, res, next) => {
     });
   }
 };
+
+
+module.exports.getActivity = async (req, res, next) => {
+  try {
+    
+    const userId = req.user._id;
+    const activity = await User.findById(userId)
+      .select("questions answeredQuestions")
+      .populate({
+        path: "questions answeredQuestions",
+        select: "-answers",
+      });
+
+    if (!activity) {
+      return res.render("userActivity", { error: "no activity found!" });
+    }
+    //If activity is found;
+    console.log(activity);
+    res.render("userActivity", { error: "", activity });
+  } catch (err) {
+    next(err);
+  }
+};
+
 
 module.exports.deleteQuestion = async (req, res) => {
   const { id } = req.params;
