@@ -157,6 +157,66 @@ module.exports.getUserActivity = (req, res, next) => {
   res.render("userActivity");
 };
 
+module.exports.follow = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const userId = req.user._id;
+
+    if (userId === undefined) {
+      const error = new Error("No userId found!");
+      error.statusCode(404);
+      throw error;
+    }
+
+    if (id === userId) {
+      const error = new Error("Can not follow himself/herself");
+      error.statusCode = 400;
+      throw error;
+    }
+
+    const followerUser = await User.findById(id).select("followings");
+    const followingUser = await User.findById(userId).select("followers");
+
+    if (!followerUser || !followingUser) {
+      const error = new Error("User not found!");
+      error.statusCode = 404;
+      throw error;
+    }
+
+    const isFollowing = followerUser.followings.find(
+      (followingUserId) => followingUserId == userId
+    );
+    //If the user is already following
+    if (isFollowing !== undefined) {
+      const error = new Error("Already following this user");
+      error.statusCode = 422;
+      throw error;
+    }
+    //If the user is not following already
+    const updatedFollowings = followerUser.followings;
+    updatedFollowings.push(userId);
+    followerUser.followings = updatedFollowings;
+
+    const updatedFollowers = followingUser.followers;
+    updatedFollowers.push(id);
+    followingUser.followers = updatedFollowers;
+
+    const updatedFollowerUser = await followerUser.save();
+    const updatedFollowingUser = await followingUser.save();
+
+    res.status(200).json({
+      message: "successfull",
+    });
+  } catch (err) {
+    if (!err.statusCode) {
+      err.statusCode = 500;
+    }
+    res.status(err.statusCode).json({
+      message: err.message,
+    });
+  }
+};
+
 module.exports.deleteQuestion = async (req, res) => {
   const { id } = req.params;
   const deletedQuestion = await Question.findByIdAndDelete(id);
