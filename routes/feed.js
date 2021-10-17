@@ -3,6 +3,7 @@ const router = express.Router();
 const ExpressError = require("../utils/ExpressError");
 const catchAsync = require("../utils/catchAsync");
 const { isLoggedIn } = require("../middleware/loginAuth");
+
 const newQuestionValidator = require("../middleware/validators/newQuestion");
 const getQuestionValidator = require("../middleware/validators/getQuestion");
 const getHomePageValidator = require("../middleware/validators/getHome");
@@ -10,9 +11,7 @@ const getHomePageValidator = require("../middleware/validators/getHome");
 const feedController = require("../controllers/feed");
 
 router.get("/", feedController.getLandingPage);
-
 router.get("/about", feedController.getAboutPage);
-
 router.get("/home", feedController.getHomePage);
 
 router.get(
@@ -46,7 +45,7 @@ router.delete(
 router.get("/PublicProfile/:id", isLoggedIn, feedController.getPublicProfile);
 
 router.get("/Editprofile", isLoggedIn, feedController.getEditprofile);
-router.get("/userActivity", isLoggedIn, feedController.getUserActivity);
+
 router.get(
   "/home",
   isLoggedIn,
@@ -57,6 +56,8 @@ router.get(
 router.get("/follow/:id", isLoggedIn, feedController.follow);
 
 router.get("/unfollow/:id", isLoggedIn, feedController.unfollow);
+
+router.get("/userActivity", isLoggedIn, feedController.getActivity);
 
 router.get("/myaccount", isLoggedIn, feedController.getProfile);
 
