@@ -7,10 +7,6 @@ const { isLoggedIn } = require("../middleware/loginAuth");
 const newQuestionValidator = require("../middleware/validators/newQuestion");
 const getQuestionValidator = require("../middleware/validators/getQuestion");
 const getHomePageValidator = require("../middleware/validators/getHome");
-<<<<<<< HEAD
-=======
-
->>>>>>> 8f74b49e79728df8f9e1d28007a14715fc2e80c0
 
 const feedController = require("../controllers/feed");
 
@@ -57,17 +53,12 @@ router.get(
   feedController.getHomePage
 );
 
-<<<<<<< HEAD
 router.get("/follow/:id", isLoggedIn, feedController.follow);
 
 router.get("/unfollow/:id", isLoggedIn, feedController.unfollow);
 
 router.get("/userActivity", isLoggedIn, feedController.getActivity);
 
-=======
-router.get("/follow/:id", isLoggedIn , feedController.follow);
-router.get("/userActivity", isLoggedIn, feedController.getActivity);
->>>>>>> 8f74b49e79728df8f9e1d28007a14715fc2e80c0
 router.get("/myaccount", isLoggedIn, feedController.getProfile);
 
 module.exports = router;
