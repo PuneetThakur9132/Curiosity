@@ -66,7 +66,11 @@ module.exports.postNewAnswer = async (req, res) => {
   const question = await Question.findById(questionId);
   //Creating a new answer doc
   const newAnswer = new Answer({
+<<<<<<< HEAD
     content: answerContent,
+=======
+   content: answerContent,
+>>>>>>> 8f74b49e79728df8f9e1d28007a14715fc2e80c0
     question: questionId,
   });
 
@@ -280,6 +284,30 @@ module.exports.getActivity = async (req, res, next) => {
     next(err);
   }
 };
+
+
+module.exports.getActivity = async (req, res, next) => {
+  try {
+    
+    const userId = req.user._id;
+    const activity = await User.findById(userId)
+      .select("questions answeredQuestions")
+      .populate({
+        path: "questions answeredQuestions",
+        select: "-answers",
+      });
+
+    if (!activity) {
+      return res.render("userActivity", { error: "no activity found!" });
+    }
+    //If activity is found;
+    console.log(activity);
+    res.render("userActivity", { error: "", activity });
+  } catch (err) {
+    next(err);
+  }
+};
+
 
 module.exports.deleteQuestion = async (req, res) => {
   const { id } = req.params;
