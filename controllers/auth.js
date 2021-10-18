@@ -9,6 +9,8 @@ const sendEmail = require("../utils/sendEmail");
 const jwt = require("jsonwebtoken");
 const genText = require("../texts/verifyEmail");
 const genForgotPasswordText = require("../texts/forgotPasswordText");
+const ExpressError = require("../utils/ExpressError");
+const { findOneAndUpdate } = require("../models/question");
 
 const JWT_SECRET = process.env.JWT_SECRET;
 
@@ -132,6 +134,26 @@ module.exports.postResetPassword = async (req, res) => {
   } catch (error) {
     req.flash("error", error.message);
     res.redirect("/forgot-password");
+  }
+};
+
+module.exports.postChangePassword = async (req, res, next) => {
+  try {
+    const userId = req.user._id;
+    const oldPassword = req.body.oldpassword;
+    const newPassword = req.body.newpassword;
+
+    const user = await User.findById(userId);
+    if (!user) {
+      next(new ExpressError("User Not Found"));
+    }
+
+    const updatePassword = await user.changePassword(oldPassword, newPassword);
+    await user.save();
+    req.flash("success", "changed password successfully...");
+    res.redirect("/editprofile");
+  } catch (e) {
+    next(e);
   }
 };
 
