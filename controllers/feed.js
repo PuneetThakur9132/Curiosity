@@ -1,7 +1,10 @@
+const path = require("path");
+
 const Question = require("../models/question");
 const Answer = require("../models/answer");
 const User = require("../models/user");
 const ExpressError = require("../utils/ExpressError");
+const {cloudinary} =require("../middleware/multerConfig");
 
 module.exports.getLandingPage = (req, res) => {
   res.render("index");
@@ -336,6 +339,29 @@ module.exports.putEditQuestion = async (req, res, next) => {
   } catch (e) {
     next(e);
   }
+};
+
+
+module.exports.postProfileDp = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const finalName = req.file;
+    console.log(finalName)
+    const user = await User.findById(id).select("dp dpFilename");
+    //If no user is found
+    if (!user) {
+        return redirect("/404");
+    }
+    if(user.dp!=="/images/user.png" && user.dpFilename !== "collegegeeks"){
+        cloudinary.uploader.destroy(user.dpFilename);
+    }
+    user.dp = finalName.path;
+    user.dpFilename = finalName.filename;
+    const newDp = await user.save();
+    res.redirect('/myaccount');
+}catch(error){
+    console.log(error);
+}
 };
 
 module.exports.deleteQuestion = async (req, res) => {
