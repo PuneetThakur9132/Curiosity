@@ -45,6 +45,8 @@ router.post(
   catchAsync(authController.postResetPassword)
 );
 
+router.post("/changepassword", authController.postChangePassword);
+
 router.get("/logout", authController.Logout);
 
 module.exports = router;
