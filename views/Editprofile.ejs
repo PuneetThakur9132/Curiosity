@@ -1,93 +1,109 @@
 <%-include('partials/header.ejs' , {style:"stylesheets/style.css"}) -%>
-<% if(currentUser){%>
-  <%- include("partials/LoggedNavbar.ejs"); -%>
-<%} else {%>
-  <%- include("partials/navbar.ejs"); -%>
-<%}%>
+  <% if(currentUser){%>
+    <%- include("partials/LoggedNavbar.ejs"); -%>
+      <%} else {%>
+        <%- include("partials/navbar.ejs"); -%>
+          <%}%>
 
 
-<%-include("partials/flash.ejs") %>
+            <%-include("partials/flash.ejs") %>
 
-<section class="my_acc">
-    <div class="container">
-        <div class="row">
-            <div class="user_profile">
-            <i class="user_icon fas fa-user-circle fa-10x"></i>
-            <div class=" upload">
-                <input type="file" id="actual-btn" hidden>
-                <label for="actual-btn" style="cursor: pointer; color: black;"><i class="fas fa-camera fa-2x"></i></label>
-            </div>
-            </div>
-            <div class="usename">
-                    <span class="display-6">UserName</span>
-                    <p>Bio</p>
-            </div>
-        </div>
-    </div>  
-</section>
+              <section class="my_acc">
+                <div class="container">
+                  <div class="row">
+                    <div class="user_profile">
+                      <i class="user_icon fas fa-user-circle fa-10x"></i>
+                      <div class=" upload">
+                        <input type="file" id="actual-btn" hidden>
+                        <label for="actual-btn" style="cursor: pointer; color: black;"><i
+                            class="fas fa-camera fa-2x"></i></label>
+                      </div>
+                    </div>
+                    <div class="usename">
+                      <span class="display-6">UserName</span>
+                      <p>Bio</p>
+                    </div>
+                  </div>
+                </div>
+              </section>
 
-<div class="container mb-2">
-  <nav>
-    <div class="nav nav-tabs" id="nav-tab" role="tablist">
-      <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Info</button>
-    </div>
-  </nav>
-</div>
+              <div class="container mb-2">
+                <nav>
+                  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home"
+                      type="button" role="tab" aria-controls="nav-home" aria-selected="true">Info</button>
+                    <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile"
+                      type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Change
+                      Password</button>
+                  </div>
+                </nav>
+              </div>
 
 
-<div class="tab-content" id="nav-tabContent">
-    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+              <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                  <section>
+                    <div class="container">
+                      <div class="row">
+                        <div class="mdl-card">
+                          <div class="card-body">
+                            <div class="card-title">
+                              <form>
+                                <div class="mb-3">
+                                  <label for="exampleFormControlInput1" class="form-label">Name</label>
+                                  <input type="text" class="form-control" name="name">
+                                </div>
+                                <div class="mb-3">
+                                  <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                                  <input type="email" class="form-control" name="email">
+                                </div>
+                                <div class="mb-3">
+                                  <label for="exampleFormControlInput1" class="form-label">stream</label>
+                                  <input type="text" class="form-control" name="stream">
+                                </div>
 
-<section>
-    <div class="container">
-        <div class="row">
-            <div class="mdl-card">
-                <div class="card-body">
-                    <div class="card-title">
-                        <form>
-                            <div class="mb-3">
-                                <label for="exampleFormControlInput1" class="form-label">Name</label>
-                                <input type="text" class="form-control" 
-                                name="name">
-                              </div>
-                              <div class="mb-3">
-                                <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                                <input type="email" class="form-control"
-                                name="email">
-                              </div>
-                              <div class="mb-3">
-                                <label for="exampleFormControlInput1" class="form-label">stream</label>
-                                <input type="text" class="form-control" 
-                                name="stream">
-                              </div>
+
+                                <button class="btn btn-primary" type="submit">Submit</button>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                </div>
+
+
+                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                  <div class="container">
+                    <div class="row">
+                      <div class="mdl-card">
+                        <div class="card-body">
+                          <div class="card-title">
+                            <form method="POST" action="/changepassword">
+
                               <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">Old Password</label>
-                                <input type="password" class="form-control" 
-                                name="old-password" required >
+                                <input type="password" class="form-control" name="old-password" required>
                               </div>
                               <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">New Password</label>
-                                <input type="password" class="form-control"
-                                name="new-password" required >
+                                <input type="password" class="form-control" name="new-password" required>
                               </div>
-
-                              <button class="btn btn-primary" type="submit">Submit</button>
-                        </form>
+                          </div>
+                          <button class="btn btn-primary" type="submit">Submit</button>
+                          </form>
+                        </div>
+                      </div>
                     </div>
+                  </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</section>
-</div>
+              </div>
+              </div>
 
-  </div>
+              </div>
 
-  <script
-  type="text/javascript"
-  src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"
-  ></script>
-  
-  
-  </body>
-  </html>
+              <script type="text/javascript"
+                src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"></script>
+              </body>
+              </html>
