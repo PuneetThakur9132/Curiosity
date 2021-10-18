@@ -20,8 +20,8 @@
                       </div>
                     </div>
                     <div class="usename">
-                      <span class="display-6">UserName</span>
-                      <p>Bio</p>
+                      <span class="display-6"><%=user.username%></span>
+                      <p><%=user.intro%></p>
                     </div>
                   </div>
                 </div>
@@ -48,18 +48,29 @@
                         <div class="mdl-card">
                           <div class="card-body">
                             <div class="card-title">
-                              <form>
+                              <form action="/editprofile" method="POST">
                                 <div class="mb-3">
-                                  <label for="exampleFormControlInput1" class="form-label">Name</label>
-                                  <input type="text" class="form-control" name="name">
+                                  <label class="form-label" for="exampleFormControlInput1">Stream </label>
+                                  <select class="form-select form-control-lg" name= "stream">
+                                    <option value="cse">Computer Science Engineering or IT</option>
+                                    <option value="ece">Electronic and Communication Engineering</option>
+                                    <option value="ee">Electrical Engineering</option>
+                                    <option value="me">Mechanical Engineering</option>
+                                    <option value="ce">Chemical Engineering</option>
+                                    <option value="ct">Ceramic Technology</option>
+                                    <option value="lt">Leather Technology</option>
+                                    <option value="ft">Food Technology</option>
+                                    <option value="cv">Civil Engineering</option>
+                                    <option value="ot">Others</option>
+                                   
+                            
+                                  </select>
                                 </div>
-                                <div class="mb-3">
-                                  <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                                  <input type="email" class="form-control" name="email">
-                                </div>
-                                <div class="mb-3">
-                                  <label for="exampleFormControlInput1" class="form-label">stream</label>
-                                  <input type="text" class="form-control" name="stream">
+                              
+
+                               <div class="mb-3">
+                                  <label for="exampleFormControlInput1" class="form-label">Bio</label>
+                                  <input type="text" class="form-control form-control-lg" name="bio">
                                 </div>
 
 

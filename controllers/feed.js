@@ -271,34 +271,70 @@ module.exports.getActivity = async (req, res, next) => {
       });
 
     if (!activity) {
-      return res.render("userActivity", { error: "no activity found!" });
+      next(new ExpressError("no activity found!"));
     }
     //If activity is found;
-    console.log(activity);
-    res.render("userActivity", { error: "", activity });
+    res.render("userActivity", { activity });
   } catch (err) {
     next(err);
   }
 };
 
-module.exports.getActivity = async (req, res, next) => {
+module.exports.getEditProfile = async (req, res, next) => {
   try {
     const userId = req.user._id;
-    const activity = await User.findById(userId)
-      .select("questions answeredQuestions")
-      .populate({
-        path: "questions answeredQuestions",
-        select: "-answers",
-      });
-
-    if (!activity) {
-      return res.render("userActivity", { error: "no activity found!" });
+    if (userId === undefined) {
+      next(new ExpressError("No userId found", 404));
     }
-    //If activity is found;
-    console.log(activity);
-    res.render("userActivity", { error: "", activity });
-  } catch (err) {
-    next(err);
+    const user = await User.findById(userId);
+    if (!user) {
+      next(new ExpressError("No user is found!"));
+    }
+    res.render("Editprofile", { user });
+  } catch (e) {
+    next(e);
+  }
+};
+
+module.exports.postEditProfile = async (req, res, next) => {
+  try {
+    const userId = req.user._id;
+    const intro = req.body.bio;
+    const branch = req.body.stream;
+
+    const user = await User.findById(userId).select("intro branch");
+
+    user.branch = branch;
+    user.intro = intro;
+
+    await user.save();
+
+    req.flash("success", "You have Successfully Updated  your info");
+    res.redirect("/editprofile");
+  } catch (e) {
+    next(e);
+  }
+};
+
+module.exports.putEditQuestion = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const editedQuestion = req.body.statement;
+    const branch = req.body.category;
+    const question = await Question.findById(id);
+    if (!question) {
+      req.flash("error", "Question not Found");
+      return res.redirect("/home");
+    }
+    question.statement = editedQuestion;
+    question.category = branch;
+
+    await question.save();
+
+    req.flash("success", "Successfully edited a question");
+    return res.redirect("/userActivity");
+  } catch (e) {
+    next(e);
   }
 };
 

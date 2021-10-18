@@ -42,23 +42,42 @@ router.delete(
   catchAsync(feedController.deleteQuestion)
 );
 
-router.get("/PublicProfile/:id", isLoggedIn, feedController.getPublicProfile);
+router.get(
+  "/PublicProfile/:id",
+  isLoggedIn,
+  catchAsync(feedController.getPublicProfile)
+);
 
-router.get("/Editprofile", isLoggedIn, feedController.getEditprofile);
+router.get(
+  "/editprofile",
+  isLoggedIn,
+  catchAsync(feedController.getEditProfile)
+);
+router.post(
+  "/editprofile",
+  isLoggedIn,
+  catchAsync(feedController.postEditProfile)
+);
 
 router.get(
   "/home",
   isLoggedIn,
   getHomePageValidator,
-  feedController.getHomePage
+  catchAsync(feedController.getHomePage)
 );
 
-router.get("/follow/:id", isLoggedIn, feedController.follow);
+router.get("/follow/:id", isLoggedIn, catchAsync(feedController.follow));
 
-router.get("/unfollow/:id", isLoggedIn, feedController.unfollow);
+router.get("/unfollow/:id", isLoggedIn, catchAsync(feedController.unfollow));
 
-router.get("/userActivity", isLoggedIn, feedController.getActivity);
+router.get("/userActivity", isLoggedIn, catchAsync(feedController.getActivity));
 
-router.get("/myaccount", isLoggedIn, feedController.getProfile);
+router.put(
+  "/editquestion/:id",
+  isLoggedIn,
+  catchAsync(feedController.putEditQuestion)
+);
+
+router.get("/myaccount", isLoggedIn, catchAsync(feedController.getProfile));
 
 module.exports = router;
