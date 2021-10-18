@@ -11,23 +11,28 @@
 <section class="my_acc">
     <div class="container">
         <div class="row">
-    
             <div class="user_profile">
-            <i class="user_icon fas fa-user-circle fa-10x"><%=profile.dp%></i>
-            <div class=" upload">
                 
-                <div class="row">
-                    <div class = "my_background rounded">
-                        <a href="/Editprofile" style="float:right"><button class="edit_profile btn btn-sm btn-secondary" type="submit">Edit Profile</button></a>
+                
+                <div class="profile_pic" >
+                    <img
+                    src="<%=profile.dp%>" alt="Profile Pic" 
+                    class=" img-fluid" id="dp"/> 
                     </div>
-                
-                    <input type="file" id="actual-btn" hidden>
-                <label for="actual-btn" style="cursor: pointer; color: black;"><i class="fas fa-camera fa-2x"></i></label>
-            </div>
-            </div>
+
+                <div class = "my_background rounded">
+                    <a href="/Editprofile" style="float: right;"><button class="edit_profile btn btn-sm btn-secondary" type="button">Edit Profile</button></a>
+                 </div>
             
-            <div class="usename">
-                    <span class="display-6"><%=profile.username%> </span>
+                <div class=" upload">
+                <form action='/profileDp' method="POST" id="jsform" enctype="multipart/form-data">
+                <input type="file" name="profilePic" id="actual-btn" hidden required>
+                <label for="actual-btn" id="from" style="cursor: pointer; color: black;"> <i class="fas fa-camera fa-2x"></i></label>
+                </form>
+            </div>
+            </div>
+            <div class="usename" style="text-transform: capitalize;">
+                    <span class="display-6"><%=profile.name%></span>
                     <p><%=profile.intro%></p>
             </div>
         </div>
