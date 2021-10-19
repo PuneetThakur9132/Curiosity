@@ -28,7 +28,11 @@ const userSchema = new Schema(
     },
     dp: {
       type: String,
-      default: "",
+      default: "/images/user.png",
+    },
+    dpFilename:{
+      type:String,
+      default:"curiosity",
     },
 
     questions: [{ type: Schema.Types.ObjectId, ref: "Question" }],

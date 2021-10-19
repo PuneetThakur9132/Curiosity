@@ -1,4 +1,6 @@
 const express = require("express");
+const multer = require("multer");
+
 const router = express.Router();
 const ExpressError = require("../utils/ExpressError");
 const catchAsync = require("../utils/catchAsync");
@@ -7,6 +9,8 @@ const { isLoggedIn } = require("../middleware/loginAuth");
 const newQuestionValidator = require("../middleware/validators/newQuestion");
 const getQuestionValidator = require("../middleware/validators/getQuestion");
 const getHomePageValidator = require("../middleware/validators/getHome");
+const { storage } = require("../middleware/multerConfig");
+const upload = multer({storage});
 
 const feedController = require("../controllers/feed");
 
@@ -76,6 +80,13 @@ router.put(
   "/editquestion/:id",
   isLoggedIn,
   catchAsync(feedController.putEditQuestion)
+);
+
+router.post(
+  "/profileDp",
+  isLoggedIn,
+  upload.single("profilePic"),
+  feedController.postProfileDp
 );
 
 router.get("/myaccount", isLoggedIn, catchAsync(feedController.getProfile));
