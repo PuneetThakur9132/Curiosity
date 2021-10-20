@@ -13,7 +13,7 @@ const getHomePageValidator = require("../middleware/validators/getHome");
 const feedController = require("../controllers/feed");
 
 const { storage } = require("../cloudinary");
-const upload = multer({ dest: " storage" });
+const upload = multer({ storage });
 
 router.get("/", feedController.getLandingPage);
 router.get("/about", feedController.getAboutPage);
@@ -84,7 +84,7 @@ router.put(
 );
 
 router.post(
-  "/profiledp/:id",
+  "/profiledp",
   upload.single("profilepic"),
   catchAsync(feedController.postProfileDp)
 );

@@ -341,7 +341,7 @@ module.exports.putEditQuestion = async (req, res, next) => {
 
 module.exports.postProfileDp = async (req, res, next) => {
   try {
-    const { id } = req.params;
+    const id = req.user._id;
     const finalName = req.file;
     console.log(finalName);
     const user = await User.findById(id).select("dp dpFilename");
@@ -354,7 +354,9 @@ module.exports.postProfileDp = async (req, res, next) => {
     }
     user.dp = finalName.path;
     user.dpFilename = finalName.filename;
-    const newDp = await user.save();
+    console.log("filedetails..", req.file);
+    await user.save();
+    console.log(user);
     res.redirect("/myaccount");
   } catch (error) {
     console.log(error);
