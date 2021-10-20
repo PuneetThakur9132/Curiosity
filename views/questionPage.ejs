@@ -28,15 +28,29 @@ Add Answer
 <section class="container">
     <div class="container">
      <div class="row">
+
+      <% if(question.answers.length === 0){ %>
+        <div class="no_qna">
+         <h3 class="display-4" style="text-align: center; margin-top: 10px;">Be the first to answer the  Question</h3>
+        </div>
+
+      <%} else {%>
        <% for(let answer of question.answers) { %>
+
      <div class="card mb-3 mt-3">
       <div class="card-body">
+
+        
         <span style="float: right;"><%= answer.createdAt.toLocaleDateString() %></span>
-        <main><%-answer.content%></main> 
+
+        <div class="card-title " ><h5 style="font-size:25px;"><%-answer.content%></h5> </div><hr>
+       <hr>
+        
       </div>
     </hr>
     </div>
   </div>
+  <% } %>
   <% } %>
 </div>
 </section>

@@ -62,3 +62,29 @@ footer {
 .h-custom {
   height: calc(100% - 73px);
 }
+
+
+.profile_pic{
+  margin: 5px auto;
+  width: 100%;
+
+  top:50px;
+ }
+ .profile_pic img{
+   border-radius: 10%;
+   width: 180px;
+   height: 180px;
+   object-fit: cover;
+   /* border: 3px solid black; */
+   /* box-shadow: 5px 5px #0096c7; */
+ }
+ .profile_pic img:hover{
+  
+  box-shadow: 5px 5px #caf0f8;
+}
+.upload{
+  top:-34px;
+  bottom: 0;
+  position: relative;
+  padding-left: 147px;
+}

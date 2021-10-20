@@ -13,6 +13,13 @@
   <section class="container">
       <div class="container">
         <div class="row">
+
+          <% if(questions.length === 0){ %>
+            <div class="no_qna">
+             <h3 class="display-4" style="text-align: center; margin-top: 10px;">Be the first to ask Question</h3>
+            </div>
+        <%}else{ %>
+         
           <% for(let question of questions) { %>
            <%stream = question.category%>
     <div class="card mb-3 mt-3">
@@ -38,6 +45,7 @@
       <hr />
     </div>
   </div>
+  <% } %>
   <% } %>
 </div>
 </section>
