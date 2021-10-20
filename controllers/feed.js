@@ -4,7 +4,7 @@ const Question = require("../models/question");
 const Answer = require("../models/answer");
 const User = require("../models/user");
 const ExpressError = require("../utils/ExpressError");
-const {cloudinary} =require("../middleware/multerConfig");
+const { cloudinary } = require("../cloudinary");
 
 module.exports.getLandingPage = (req, res) => {
   res.render("index");
@@ -56,7 +56,6 @@ module.exports.getQuestion = async (req, res) => {
     req.flash("error", "Cannot find the question");
     return res.redirect("/questions");
   }
-  console.log(question);
   res.render("questionPage", { question });
 };
 
@@ -129,7 +128,6 @@ module.exports.getProfile = async (req, res, next) => {
       followings: user.followings.length,
       answeredQuestions: user.answeredQuestions.length,
     };
-    console.log(profile);
     res.render("myaccount", { profile });
   } catch (err) {
     next(err);
@@ -341,27 +339,26 @@ module.exports.putEditQuestion = async (req, res, next) => {
   }
 };
 
-
 module.exports.postProfileDp = async (req, res, next) => {
   try {
     const { id } = req.params;
     const finalName = req.file;
-    console.log(finalName)
+    console.log(finalName);
     const user = await User.findById(id).select("dp dpFilename");
     //If no user is found
     if (!user) {
-        return redirect("/404");
+      return res.render("page404");
     }
-    if(user.dp!=="/images/user.png" && user.dpFilename !== "collegegeeks"){
-        cloudinary.uploader.destroy(user.dpFilename);
+    if (user.dp !== "/images/user.png" && user.dpFilename !== "curiosity") {
+      cloudinary.uploader.destroy(user.dpFilename);
     }
     user.dp = finalName.path;
     user.dpFilename = finalName.filename;
     const newDp = await user.save();
-    res.redirect('/myaccount');
-}catch(error){
+    res.redirect("/myaccount");
+  } catch (error) {
     console.log(error);
-}
+  }
 };
 
 module.exports.deleteQuestion = async (req, res) => {
@@ -370,4 +367,3 @@ module.exports.deleteQuestion = async (req, res) => {
   req.flash("success", "Successfully deleted question");
   res.redirect(`/questions?category=${deletedQuestion.category}`);
 };
-

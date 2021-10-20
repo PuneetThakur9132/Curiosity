@@ -14,22 +14,31 @@
             <div class="user_profile">
                 
                 
-                <div class="profile_pic" >
+                <div class="user_profile">
+                    <div class="profile_pic" >
+                        <% if( profile.dp.length>0 && profile.dp !== "/images/user.png"){%> 
                     <img
                     src="<%=profile.dp%>" alt="Profile Pic" 
                     class=" img-fluid" id="dp"/> 
                     </div>
+                    <% }else{ %> 
+                     <i class="user_icon fas fa-user-circle fa-10x"></i>
+                     <% } %> 
 
                 <div class = "my_background rounded">
                     <a href="/Editprofile" style="float: right;"><button class="edit_profile btn btn-sm btn-secondary" type="button">Edit Profile</button></a>
                  </div>
             
-                <div class=" upload">
-                <form action='/profileDp' method="POST" id="jsform" enctype="multipart/form-data">
-                <input type="file" name="profilePic" id="actual-btn" hidden required>
-                <label for="actual-btn" id="from" style="cursor: pointer; color: black;"> <i class="fas fa-camera fa-2x"></i></label>
-                </form>
-            </div>
+                <div class="upload">
+                        <form action="/profiledp/<%=profile._id%>" method="POST" id="jsform" enctype="multipart/form-data">
+                        <input type="file" name="profilepic" id="actual-btn" hidden required>
+                        <label for="actual-btn" id="from" style="cursor: pointer; color: black;"> <i class="fas fa-camera fa-2x"></i></label>
+                       </form>
+
+                </div>
+
+
+                 
             </div>
             <div class="usename" style="text-transform: capitalize;">
                     <span class="display-6"><%=profile.name%></span>
@@ -134,7 +143,7 @@
 type="text/javascript"
 src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"
 ></script>
-
+<script src="js/myaccount.js"></script>
 
 </body>
 </html>

@@ -1,4 +1,6 @@
 // ************ NPM MODULES **********//
+
+// this line means if we are in development mode , them process.env should be available on our node app
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");

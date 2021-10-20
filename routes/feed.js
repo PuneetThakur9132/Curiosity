@@ -1,18 +1,19 @@
 const express = require("express");
 const multer = require("multer");
-
 const router = express.Router();
+
 const ExpressError = require("../utils/ExpressError");
 const catchAsync = require("../utils/catchAsync");
+
 const { isLoggedIn } = require("../middleware/loginAuth");
 
 const newQuestionValidator = require("../middleware/validators/newQuestion");
 const getQuestionValidator = require("../middleware/validators/getQuestion");
 const getHomePageValidator = require("../middleware/validators/getHome");
-const { storage } = require("../middleware/multerConfig");
-const upload = multer({storage});
-
 const feedController = require("../controllers/feed");
+
+const { storage } = require("../cloudinary");
+const upload = multer({ dest: " storage" });
 
 router.get("/", feedController.getLandingPage);
 router.get("/about", feedController.getAboutPage);
@@ -83,10 +84,9 @@ router.put(
 );
 
 router.post(
-  "/profileDp",
-  isLoggedIn,
-  upload.single("profilePic"),
-  feedController.postProfileDp
+  "/profiledp/:id",
+  upload.single("profilepic"),
+  catchAsync(feedController.postProfileDp)
 );
 
 router.get("/myaccount", isLoggedIn, catchAsync(feedController.getProfile));
