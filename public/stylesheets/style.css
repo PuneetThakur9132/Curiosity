@@ -149,3 +149,125 @@ footer {
     left: 0;
   }
 }
+
+/* Card hover effects */
+.aboutcuriosity{
+  background: #01497c;    
+  }
+  
+  .aboutcuriosity h2{
+    text-align: center; 
+    color: #fb8500; 
+    margin-bottom:30px; 
+    font-size:40px;
+    margin-top: 30px;;
+  }
+  .container2{
+    font-family: consolas;
+     background: #01497c;
+      position: relative;
+      display: flex;
+      margin: auto;
+    flex-wrap: wrap;
+  }
+  
+  .card{
+      position: relative;
+      cursor: pointer;
+  }
+  
+  .face{
+      width: 300px;
+      height: 200px;
+      transition: 0.5s;
+  }
+  
+   .card .face.face1{
+      position: relative;
+      background: #01497c;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+      transform: translateY(100px);
+  }
+  
+  .card:hover .face.face1{
+      background: #ff0057;
+      transform: translateY(0);
+  }
+  
+  .card .face.face1 .content{
+      opacity: 0.2;
+      transition: 0.5s;
+  }
+  
+  .card:hover .face.face1 .content{
+      opacity: 1;
+  }
+  
+  .card .face.face1 .content img{
+      max-width: 100px;
+  }
+  
+  .card .face.face1 .content h3{
+      margin: auto;
+      padding: 0;
+      color:cornsilk;
+      text-align: center;
+      font-size: 1.2em;
+    
+  }
+  
+  .card .face.face2{
+      position: relative;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      box-sizing: border-box;
+      /* box-shadow: 0 20px 20px rgba(240, 233, 236, 0.8); */
+      transform: translateY(-100px);
+  }
+  
+  .card:hover .face.face2{
+      transform: translateY(0);
+  }
+  
+  
+  .card .face.face2 .content a{
+      margin: 15px 0 0;
+      display:  inline-block;
+      text-decoration: none;
+      font-weight: 900;
+      color: #333;
+      padding: 5px;
+      border: 1px solid #333;
+  }
+  
+  .card .face.face2 .content a:hover{
+      background: #333;
+      color: #fff;
+  }
+  .card{
+    margin:auto;
+    }
+  @media (min-width: 768px) {
+        .container {
+          width: 750px;
+          
+        }
+    
+     }
+      @media (min-width: 992px) {
+        .container {
+          width: 970px;
+        }
+      }
+      @media (min-width: 1200px) {
+        .container {
+          width: 1170px;
+        }
+  }
+  
