@@ -1,3 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
 body {
   margin: 0;
   display: flex;
@@ -87,4 +95,57 @@ footer {
   bottom: 0;
   position: relative;
   padding-left: 147px;
+}
+
+.wrapper{
+  display: flex;
+  margin-left: 5px;
+}
+.wrapper .static-txt{
+  color: #343F4F;
+  font-size: 55px;
+  font-weight: 400;
+}
+.wrapper .dynamic-txts{
+  margin-left:0px;
+  height: 90px;
+  line-height: 70px;
+  overflow: hidden;
+}
+.dynamic-txts li{
+  list-style: none;
+  color: #e63946;
+  font-size: 50px;
+  font-weight: 500;
+  position: relative;
+  top: 0;
+  animation: slide 12s steps(4) infinite;
+}
+@keyframes slide {
+  100%{
+    top: -360px;
+  }
+}
+.dynamic-txts li span{
+  position: relative;
+  margin: 5px 0;
+  line-height: 90px;
+}
+.dynamic-txts li span::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: #fff;
+  border-left: 2px solid #FC6D6D;
+  animation: typing 3s steps(10) infinite;
+}
+@keyframes typing {
+  40%, 60%{
+    left: calc(100% + 30px);
+  }
+  100%{
+    left: 0;
+  }
 }
