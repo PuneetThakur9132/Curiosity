@@ -1,35 +1,130 @@
-<%-include('partials/header.ejs' , {style:"stylesheets/style.css"}) -%>
 
-<% if(currentUser){%>
-        <%- include("partials/LoggedNavbar.ejs"); -%>
-  <%} else {%>
-        <%- include("partials/navbar.ejs"); -%>
-  <%}%>
-<%-include("partials/flash.ejs") %>
+  <%-include('partials/header.ejs' , {style:"stylesheets/style.css"}) -%>
 
-<!-- Section 1 Starts -->
-<section class="home_page mb-5">
- 
-      <!-- <svg width="100%" height="80%" id="svg" viewBox="0 210 1440 5" xmlns="http://www.w3.org/2000/svg" class="transition duration-300 ease-in-out delay-150"><defs><linearGradient id="gradient" x1="5%" y1="27%" x2="95%" y2="73%"><stop offset="5%" stop-color="#9900efff"></stop><stop offset="95%" stop-color="#8ed1fcff"></stop></linearGradient></defs><path d="M 0,500 C 0,500 0,250 0,250 C 96,269.17857142857144 192,288.35714285714283 307,298 C 422,307.64285714285717 556,307.75000000000006 686,287 C 816,266.24999999999994 942,224.6428571428571 1067,215 C 1192,205.3571428571429 1316,227.67857142857144 1440,250 C 1440,250 1440,500 1440,500 Z" stroke="none" stroke-width="0" fill="url(#gradient)" class="transition-all duration-300 ease-in-out delay-150 path-0" transform="rotate(-180 720 250)"></path></svg> -->
-      <!-- <div class="container"> -->
-      <svg  id="svg" viewBox="0 100 1200 220" xmlns="http://www.w3.org/2000/svg" class="transition duration-300 ease-in-out delay-150"><defs><linearGradient id="gradient" x1="5%" y1="27%" x2="95%" y2="73%"><stop offset="5%" stop-color="#9900efff"></stop><stop offset="95%" stop-color="#8ed1fcff"></stop></linearGradient></defs><path d="M 0,500 C 0,500 0,250 0,250 C 96,269.17857142857144 192,288.35714285714283 307,298 C 422,307.64285714285717 556,307.75000000000006 686,287 C 816,266.24999999999994 942,224.6428571428571 1067,215 C 1192,205.3571428571429 1316,227.67857142857144 1440,250 C 1440,250 1440,500 1440,500 Z" stroke="none" stroke-width="0" fill="url(#gradient)" class="transition-all duration-300 ease-in-out delay-150 path-0" transform="rotate(-180 720 250)"></path></svg>            
+  <% if(currentUser){%>
+          <%- include("partials/LoggedNavbar.ejs"); -%>
+    <%} else {%>
+          <%- include("partials/navbar.ejs"); -%>
+    <%}%>
+  <%-include("partials/flash.ejs") %>
+  
+  <!-- Section 1 Starts -->
+  <!-- <section class="home_page mb-5">
+        <div class="container"> 
+        <svg width="100%" height="100%" id="svg" viewBox="0 100 1200 220" xmlns="http://www.w3.org/2000/svg" class="transition duration-300 ease-in-out delay-150"><defs><linearGradient id="gradient" x1="5%" y1="27%" x2="95%" y2="73%"><stop offset="5%" stop-color="#9900efff"></stop><stop offset="95%" stop-color="#8ed1fcff"></stop></linearGradient></defs><path d="M 0,500 C 0,500 0,250 0,250 C 96,269.17857142857144 192,288.35714285714283 307,298 C 422,307.64285714285717 556,307.75000000000006 686,287 C 816,266.24999999999994 942,224.6428571428571 1067,215 C 1192,205.3571428571429 1316,227.67857142857144 1440,250 C 1440,250 1440,500 1440,500 Z" stroke="none" stroke-width="0" fill="url(#gradient)" class="transition-all duration-300 ease-in-out delay-150 path-0" transform="rotate(-180 720 250)"></path></svg>            
+        <div class="row">
+     
+        <div class = "col-lg-6 col-md-6 col-12 order-1 order-lg-2 order-md-2  mb-2">
+        <img src="images/19197641.jpg" alt="image" class="img-fluid">
+        </div>
+        <div class = "col-lg-6 col-md-6 col-12 order-lg-1 order-2  order-md-1 flex-lg-column mb-2"> 
+        <p><h4><span class="display-6 Welcome_msg"><b>Welcome To Curiosity</b></span> </h4></p>
+        <h4>Free , Simple , Easy to Use Question Answer Platform</h4>
+        <a href="/signup"> <button class="btn btn-primary"> Sign up </button> </a>
+        <a href="/login"> <button class="btn btn-outline-primary"> Login </button> </a>
+        </div>
+        </div>
+        </div>
+  </section> -->
+  
+  <section class="home_page">
+      <div class="container-fluid">
+         <svg width="100%" height="100%" id="svg" viewBox="50 110 1300 220" xmlns="http://www.w3.org/2000/svg" class="transition duration-300 ease-in-out delay-150"><defs><linearGradient id="gradient" x1="5%" y1="27%" x2="95%" y2="73%"><stop offset="5%" stop-color="#9900efff"></stop><stop offset="95%" stop-color="#8ed1fcff"></stop></linearGradient></defs><path d="M 0,500 C 0,500 0,250 0,250 C 96,269.17857142857144 192,288.35714285714283 307,298 C 422,307.64285714285717 556,307.75000000000006 686,287 C 816,266.24999999999994 942,224.6428571428571 1067,215 C 1192,205.3571428571429 1316,227.67857142857144 1440,250 C 1440,250 1440,500 1440,500 Z" stroke="none" stroke-width="0" fill="url(#gradient)" class="transition-all duration-300 ease-in-out delay-150 path-0" transform="rotate(-180 720 250)"></path></svg>            
+         <div class="row">
+         <div class = "col-sm-9 col-md-6 col-lg-6 order-2  mb-2">
+            <img src="images/19197641.jpg" alt="image" class="img-fluid">
+          </div>
+         <div class = "col-sm-3 col-md-6 col-lg-6 order-1 mb-2">
+           <p><h4><span class="display-6 Welcome" style="font-weight: 900;"><b>Welcome To Curiosity.</b></span> </h4></p>
+           <h4>Free, Simple, Easy to Use Question Answer Platform for college students to clear their doubts.</h4>
+  
+            <a href="/signup"> <button  class="btn btn-primary"> Sign up </button> </a>
+            <a href="/login"> <button class="btn btn-outline-primary"> Login </button> </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+  <!--Section 2 Starts-->
+  <!-- 
+  <div class="container-fluid">
+      <h1>Hello World!</h1>
       <div class="row">
-      <!-- <svg width="100%" height="100%" id="svg" viewBox="0 100 1440 220" xmlns="http://www.w3.org/2000/svg" class="transition duration-300 ease-in-out delay-150"><defs><linearGradient id="gradient" x1="5%" y1="27%" x2="95%" y2="73%"><stop offset="5%" stop-color="#9900efff"></stop><stop offset="95%" stop-color="#8ed1fcff"></stop></linearGradient></defs><path d="M 0,500 C 0,500 0,250 0,250 C 96,269.17857142857144 192,288.35714285714283 307,298 C 422,307.64285714285717 556,307.75000000000006 686,287 C 816,266.24999999999994 942,224.6428571428571 1067,215 C 1192,205.3571428571429 1316,227.67857142857144 1440,250 C 1440,250 1440,500 1440,500 Z" stroke="none" stroke-width="0" fill="url(#gradient)" class="transition-all duration-300 ease-in-out delay-150 path-0" transform="rotate(-180 720 250)"></path></svg> -->
-      <div class = "col-lg-6 col-md-6 col-12 order-1 order-lg-2 order-md-2  mb-2">
-      <img src="images/19197641.jpg" alt="image" class="img-fluid">
+        <div class="col-sm-3 col-md-6 col-lg-4" style="background-color:yellow;">
+          <p>Lorem ipsum...</p>
+        </div>
+        <div class="col-sm-9 col-md-6 col-lg-8" style="background-color:pink;">
+          <p>Sed ut perspiciatis...</p>
+        </div>
       </div>
-      <div class = "col-lg-6 col-md-6 col-12 order-lg-1 order-2  order-md-1 flex-lg-column mb-2"> 
-      <p><h4><span class="display-6 Welcome_msg"><b>Welcome To Curiosity</b></span> </h4></p>
-      <h4>Free , Simple , Easy to Use Question Answer Platform</h4>
-      <a href="/signup"> <button class="btn btn-primary"> Sign up </button> </a>
-      <a href="/login"> <button class="btn btn-outline-primary"> Login </button> </a>
+    </div> -->
+  
+    <!--Section 2 Starts-->
+  
+  <section class="sec_page mb-5 mt-5" >
+      <h2 style="text-align: center;">Our Features</h2>
+      <div class="container">
+          <div class="row">
+              <div class = "col-sm-9 col-md-6 col-lg-6 order-2  mb-2">
+                 <img src="images/e-learning.jpg" alt="image" class="img-fluid">
+              </div>
+              <div class = "col-sm-3 col-md-6 col-lg-6 order-1 mb-2">
+               <h3>Free & easy to use</h3>
+               <h4>Get your answers from other Students.</h4><br>
+               <p>No Fees for using the application. Premium features available .</p>
+            </div>
+      </div>
+  
+      <div class="row">
+          <div class = "col-sm-9 col-md-6 col-lg-6 order-1  mb-2">
+             <img src="images/hacker.jpg" alt="image" class="img-fluid">
+          </div>
+          <div class = "col-sm-3 col-md-6 col-lg-6 order-2 mb-2">
+           <h3>skills</h3>
+           <h4>See where your skills stand.</h4><br>
+           <p>The best way to start learning is to see where your skills stand first. Take a quick skill assessment to uncover your strengths and weaknesses and get personalized recommendations on what to work on.</p>
+          </div>
+      </div>
+  
+      <div class="row">
+        <div class = "col-sm-9 col-md-6 col-lg-6 order-2  mb-2">
+          <img src="images/typing.jpg" alt="image" class="img-fluid">
+        </div>
+        <div class = "col-sm-3 col-md-6 col-lg-6 order-1 mb-2">
+         <h3>Hands on learning</h3>
+         <h4>Practice applying new skills.</h4><br/>
+         <p>With projects and interactive courses, you can test drive new skills in a risk-free environment and get guided feedback—so you can make mistakes before they matter. </p>
+       </div>
+    </div>
+   </div>    
+  </section>
+    
+  
+  <!-- Section 3 starts -->
+  <section class="home_page mb-5">
+      <div class="container">
+      <div class="row">
+            <div class = "col-sm-9 col-md-6 col-lg-6 order-1  mb-2"> 
+                  <img src="images/sizemini_93.jpg" alt="image" class="img-fluid">
+            </div>
+      <div class = "col-sm-3 col-md-6 col-lg-6 order-2 mb-2">
+            <div class="wrapper">
+                  <div class="static-txt">We</div>
+                  <ul class="dynamic-txts">
+                        <li><span>build the world!</span></li>
+                        <li><span>move the world!</span></li>
+                        <li><span>run the world!</span></li>
+                        <li><span>are engineers!</span></li>
+                  </ul>
+            </div>
       </div>
       </div>
-</section>
-
-<!-- Section 2 starts -->
-
-<section class="aboutcuriosity">
+      </div>
+  </section>
+  
+  <!-- Section 4 starts -->
+  
+  <section class="aboutcuriosity">
       <h2>What is Curiosity all about?</h2>
       <div class="container2">
             <div class="card">
@@ -75,46 +170,21 @@
                 </div>
             </div>
         </div>
-       
         <hr/>
-</section>
-
-
-
-<!-- Section 3 starts -->
-<section class="home_page mb-5 mt-5">
-      <div class="container">
-      <div class="row">
-            <div class = "col-lg-6 col-md-6 col-12 order-lg-1 order-2  order-md-1 flex-lg-column mb-2"> 
-                  <img src="images/sizemini_93.jpg" alt="image" class="img-fluid">
-            </div>
-      <div class = "col-lg-6 col-md-6 col-12 order-1 order-lg-2 order-md-2  mb-2">
-            <div class="wrapper">
-                  <div class="static-txt">We</div>
-                  <ul class="dynamic-txts">
-                        <li><span>build the world!</span></li>
-                        <li><span>move the world!</span></li>
-                        <li><span>run the world!</span></li>
-                        <li><span>are engineers!</span></li>
-                  </ul>
-            </div>
-      </div>
-      </div>
-      </div>
-</section>
-
-   
-
-
-
-
-
-<!-- MDB -->
-<script
-type="text/javascript"
-src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"
-></script>
-
-</body>
-
-</html>
+        <hr/>
+        <hr/>
+  </section>   
+  
+  
+  
+  
+  
+  <!-- MDB -->
+  <script
+  type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"
+  ></script>
+  
+  </body>
+  
+  </html>
