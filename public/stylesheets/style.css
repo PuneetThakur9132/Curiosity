@@ -3,7 +3,7 @@
 *{
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
   font-family: 'Poppins', sans-serif;
 }
 body {
@@ -12,7 +12,9 @@ body {
   flex-direction: column;
   height: 100vh;
 }
-
+.Welcome{
+  font-size: 3rem;
+}
 /* footer  */
 footer {
   margin-top: auto;
@@ -71,7 +73,7 @@ footer {
   height: calc(100% - 73px);
 }
 
-
+/* Profile pic  */
 .profile_pic{
   margin: 5px auto;
   width: 100%;
@@ -97,6 +99,23 @@ footer {
   padding-left: 147px;
 }
 
+/*Section 2*/
+.sec_page h2{
+  padding-bottom: 2rem;
+}
+
+.sec_page h3 {
+  text-transform:uppercase;
+  color:#ff0057;
+  padding-top: 100px;
+}
+.sec_page p{
+  color:black;
+  
+}
+
+
+/* Typing effect  */
 .wrapper{
   display: flex;
   margin-left: 5px;
@@ -178,7 +197,7 @@ footer {
   
   .face{
       width: 300px;
-      height: 200px;
+      height: 190px;
       transition: 0.5s;
   }
   
@@ -237,7 +256,7 @@ footer {
   
   
   .card .face.face2 .content a{
-      margin: 15px 0 0;
+      margin: 20px 0 0;
       display:  inline-block;
       text-decoration: none;
       font-weight: 900;
