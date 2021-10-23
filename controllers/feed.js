@@ -18,13 +18,24 @@ module.exports.getHomePage = async (req, res) => {
   if (!req.user) {
     res.render("index");
   }
+  const page = req.query.page || 1;
   const category = req.user.branch;
-  const questions = await Question.find({ category });
+  const totalQuestions = await Question.countDocuments({ category });
+  const totalPages = Math.ceil(totalQuestions / 10);
+  const questions = await Question.find({ category })
+    .populate("author")
+    .skip((page - 1) * 10)
+    .limit(10);
+
   if (!questions) {
     req.flash("error", "Cannot Find any question");
     return res.redirect("/home");
   }
-  res.render("home", { questions });
+  res.render("home", {
+    questions,
+    totalPages,
+    currentPage: page,
+  });
 };
 
 module.exports.getQuestions = async (req, res) => {
