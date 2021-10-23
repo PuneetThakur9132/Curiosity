@@ -1,4 +1,6 @@
-<%-include('partials/header.ejs' , {style:"stylesheets/style.css"}) -%>
+<%-include('partials/header.ejs' , {style:"/stylesheets/style.css"}) -%>
+
+
 <% if(currentUser){%>
   <%- include("partials/LoggedNavbar.ejs"); -%>
 <%} else {%>
@@ -9,25 +11,30 @@
 
 <body class="body">
 
-<div class="card mb-2 mt-4" >
-  <div class="card-body">
-   <h1> <b><%=question.statement %> </b></h1>
-    <hr />
-<button
-style="float:right"
-  type="button"
-  class="btn btn-primary"
-  data-mdb-toggle="modal"
-  data-mdb-target="#exampleModal"
->
-Add Answer
-</button>
-</div>
-</div>
+<section>
+<div class=" container card Quescard  w-100  mb-4 mt-4 " data-mdb-toggle="modal" data-mdb-target="#ansModal" ">
+  <div class="row ">
+    <div class="col-md-2">
+      <img src="/images/2152.jpg" alt="" class="img-fluid">
 
+    </div>
+    <div class="col-md-10">
+      <div class =" mb-2 mt-4  style="text-transform: capitalize;" >
+        <div class="card-body">
+              <div class="card-title" style="color:#e63946;"><h2><%= question.statement %>?  </h2></div>
+              <div style="float: right; color:#8ac926; font-weight: 900;">Click to answer</div>
+        </div>
+
+    </div>
+
+  </div>
+  </div>
+   
+
+</div>
 <section class="container">
-    <div class="container">
-     <div class="row">
+    <div class="container card ">
+    
 
       <% if(question.answers.length === 0){ %>
         <div class="no_qna">
@@ -36,18 +43,24 @@ Add Answer
 
       <%} else {%>
        <% for(let answer of question.answers) { %>
+        <div class="row">
+          <div class="col-md-2">
+            <img src="/images/20944701.jpg" alt="" class="img-fluid">
 
-     <div class="card mb-3 mt-3">
-      <div class="card-body">
+          </div>
+
+     <div class=" col-md-10 mb-3 mt-3 answercard">
+      <div class="card-body ">
 
         
         <span style="float: right;"><%= answer.createdAt.toLocaleDateString() %></span>
+        <div class="card-title " ><h5 style="font-size:16px;">Submitted By : <a class="cardanc" href="/PublicProfile/<%=answer.author._id%>"><%=answer.author.username %></a></h5> </div><hr>
 
-        <div class="card-title " ><h5 style="font-size:25px;"><%-answer.content%></h5> </div><hr>
-       <hr>
+        <div class="card-title" style="color:#8ac926" ><h5 style="font-size:25px; font-weight: 900;"><%-answer.content%></h5> </div>
+        
+
         
       </div>
-    </hr>
     </div>
   </div>
   <% } %>
@@ -58,7 +71,7 @@ Add Answer
 <!-- Modal -->
 <div
   class="modal fade"
-  id="exampleModal"
+  id="ansModal"
   tabindex="-1"
   aria-labelledby="exampleModalLabel"
   aria-hidden="true"
@@ -87,9 +100,8 @@ Add Answer
     </div>
   </div>
 </div>
-</div>
-</div>
 
+</section>
 <!-- MDB -->
 <script
 type="text/javascript"
@@ -103,7 +115,6 @@ src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"
    }); 
  </script>
 </body>
-
 </html>
 
 

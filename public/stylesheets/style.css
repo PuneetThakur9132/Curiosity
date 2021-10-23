@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 
-*{
+* {
   margin: 0;
   padding: 0;
   /* box-sizing: border-box; */
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 body {
   margin: 0;
@@ -12,7 +12,7 @@ body {
   flex-direction: column;
   height: 100vh;
 }
-.Welcome{
+.Welcome {
   font-size: 3rem;
 }
 /* footer  */
@@ -45,16 +45,35 @@ footer {
 .body {
   background-color: #f1f2f2;
 }
-.openanswer {
+/* .openanswer {
   background-color: #e7ebeb;
 }
 .openanswer:hover {
   transform: scale(1.05);
   color: #4895ef;
-}
+} */
+
 .card {
   font-size: 20px;
-  border-radius: 10px;
+}
+.cards {
+  background-image: radial-gradient(white 70%, #caf0f8);
+}
+.card .cardbtn {
+  background-color: #caf0f8;
+  color: #1b4965;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  padding: 2px 8px;
+}
+.card .cardbtn:hover {
+  background-color: #5fa8d3;
+}
+.card .cardanc {
+  color: black;
+}
+.card .cardanc:hover {
+  color: blue;
 }
 
 .card:hover {
@@ -74,252 +93,34 @@ footer {
 }
 
 /* Profile pic  */
-.profile_pic{
+.profile_pic {
   margin: 5px auto;
   width: 100%;
 
-  top:50px;
- }
- .profile_pic img{
-   border-radius: 10%;
-   width: 180px;
-   height: 180px;
-   object-fit: cover;
-   /* border: 3px solid black; */
-   /* box-shadow: 5px 5px #0096c7; */
- }
- .profile_pic img:hover{
-  
+  top: 50px;
+}
+.profile_pic img {
+  border-radius: 10%;
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  /* border: 3px solid black; */
+  /* box-shadow: 5px 5px #0096c7; */
+}
+.profile_pic img:hover {
   box-shadow: 5px 5px #caf0f8;
 }
-.upload{
-  top:-34px;
+.upload {
+  top: -34px;
   bottom: 0;
   position: relative;
   padding-left: 147px;
 }
+/* questionPage */
+/* .Quescard {
+  background-image: linear-gradient(white 70%, #e63946);
+} */
 
-/*Section 2*/
-.sec_page h2{
-  padding-bottom: 2rem;
+.answercard {
+  height: 150px;
 }
-
-.sec_page h3 {
-  text-transform:uppercase;
-  color:#ff0057;
-  padding-top: 100px;
-}
-.sec_page p{
-  color:black;
-  
-}
-.content{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  margin-bottom: 3rem;
-  margin-top: 3rem;
-}
-.content h2{
-  position:absolute;
-  color:#fff;
-  font-size: 7rem;
-}
-.content h2:nth-child(1){
-  color:transparent;
-  -webkit-text-stroke: 2px #03a9f4;
-}
-.content h2:nth-child(2){
-  color:#03a9f4;
-  animation:animate 4s ease-in-out infinite;
-}
-@keyframes animate
-{
-  0%,100%
-  {
-    clip-path:polygon(0% 45%,15% 44%,32% 50%,54% 60%,70% 61%,84% 59%,100% 52%,100% 100%,0% 100%);
-  }
-  50%{
-      clip-path:polygon(0% 60%,16% 65%,34% 66%,51% 62%,67% 50%,84% 45%,100% 46%,100% 100%,0% 100%);
-  }
-}
-
-
-/* Typing effect  */
-.wrapper{
-  display: flex;
-  margin-left: 5px;
-}
-.wrapper .static-txt{
-  color: #343F4F;
-  font-size: 55px;
-  font-weight: 400;
-}
-.wrapper .dynamic-txts{
-  margin-left:0px;
-  height: 90px;
-  line-height: 70px;
-  overflow: hidden;
-}
-.dynamic-txts li{
-  list-style: none;
-  color: #e63946;
-  font-size: 50px;
-  font-weight: 500;
-  position: relative;
-  top: 0;
-  animation: slide 12s steps(4) infinite;
-}
-@keyframes slide {
-  100%{
-    top: -360px;
-  }
-}
-.dynamic-txts li span{
-  position: relative;
-  margin: 5px 0;
-  line-height: 90px;
-}
-.dynamic-txts li span::after{
-  content: "";
-  position: absolute;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background: #fff;
-  border-left: 2px solid #FC6D6D;
-  animation: typing 3s steps(10) infinite;
-}
-@keyframes typing {
-  40%, 60%{
-    left: calc(100% + 30px);
-  }
-  100%{
-    left: 0;
-  }
-}
-
-/* Card hover effects */
-.aboutcuriosity{
-  background: #01497c;    
-  }
-  
-  .aboutcuriosity h2{
-    text-align: center; 
-    color: #fb8500; 
-    margin-bottom:30px; 
-    font-size:40px;
-    margin-top: 30px;;
-  }
-  .container2{
-    font-family: consolas;
-     background: #01497c;
-      position: relative;
-      display: flex;
-      margin: auto;
-    flex-wrap: wrap;
-  }
-  
-  .card{
-      position: relative;
-      cursor: pointer;
-  }
-  
-  .face{
-      width: 300px;
-      height: 200px;
-      transition: 0.5s;
-  }
-  
-   .card .face.face1{
-      position: relative;
-      background: #01497c;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 1;
-      transform: translateY(100px);
-  }
-  
-  .card:hover .face.face1{
-      background: #ff0057;
-      transform: translateY(0);
-      box-shadow: inset 0 0 10px #e63946;
-  }
-  
-  .card .face.face1 .content{
-      opacity: 0.2;
-      transition: 0.5s;
-  }
-  
-  .card:hover .face.face1 .content{
-      opacity: 1;
-  }
-  
-  .card .face.face1 .content img{
-      max-width: 100px;
-  }
-  
-  .card .face.face1 .content h3{
-      margin: auto;
-      padding: 0;
-      color:cornsilk;
-      text-align: center;
-      font-size: 1.2em;
-    
-  }
-  
-  .card .face.face2{
-      position: relative;
-      background: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-      box-sizing: border-box;
-      /* box-shadow: 0 20px 20px rgba(240, 233, 236, 0.8); */
-      transform: translateY(-100px);
-      box-shadow: inset 0 0 10px #222049;
-  }
-  
-  .card:hover .face.face2{
-      transform: translateY(0);
-  }
-  
-  
-  .card .face.face2 .content a{
-      margin: 20px 0 0;
-      display:  inline-block;
-      text-decoration: none;
-      font-weight: 900;
-      color: #333;
-      padding: 5px;
-      border: 1px solid #333;
-  }
-  
-  .card .face.face2 .content a:hover{
-      background: #333;
-      color: #fff;
-  }
-  .card{
-    margin:auto;
-    }
-  @media (min-width: 768px) {
-        .container {
-          width: 750px;
-          
-        }
-    
-     }
-      @media (min-width: 992px) {
-        .container {
-          width: 970px;
-        }
-      }
-      @media (min-width: 1200px) {
-        .container {
-          width: 1170px;
-        }
-  }
-  

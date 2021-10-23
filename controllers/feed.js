@@ -49,13 +49,18 @@ module.exports.getQuestions = async (req, res) => {
 module.exports.getQuestion = async (req, res) => {
   const { id } = req.params;
   const question = await Question.findById(id)
-    .populate("answers")
+    .populate({
+      path: "answers",
+      populate: {
+        path: "author",
+      },
+    })
     .populate("author");
-  console.log(question);
   if (!question) {
     req.flash("error", "Cannot find the question");
     return res.redirect("/questions");
   }
+  console.log(question);
   res.render("questionPage", { question });
 };
 
@@ -68,11 +73,13 @@ module.exports.postNewAnswer = async (req, res) => {
   const question = await Question.findById(questionId);
   //Creating a new answer doc
   const newAnswer = new Answer({
+    author: req.user._id,
     content: answerContent,
     question: questionId,
   });
 
   const answer = await newAnswer.save();
+  // console.log("answer..", answer);
   //connecting docs
   const updatedAnswers = question.answers;
   updatedAnswers.push(answer);
@@ -356,7 +363,6 @@ module.exports.postProfileDp = async (req, res, next) => {
     user.dpFilename = finalName.filename;
     console.log("filedetails..", req.file);
     await user.save();
-    console.log(user);
     res.redirect("/myaccount");
   } catch (error) {
     console.log(error);
