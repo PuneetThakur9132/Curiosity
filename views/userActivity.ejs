@@ -28,7 +28,7 @@
                 <div class="row">
                     <!-- <%= activity %> -->
                     <% activity.questions.forEach(question=>{%>
-                    <div class="card mb-1">
+                    <div class="card mb-3 mt-3" style="background-color: #d8f3dc;">
                         <div class="card-body">
                             <span style="text-transform: capitalize;">Category : <%= question.category %></span>
                             <span style="float: right;">
@@ -102,7 +102,7 @@
                         <span class="display-5 mt-5">You have not answered any Questions</span>
                     <%} else { %>
                 <% activity.answeredQuestions.forEach(question=>{%>
-                        <div class="card mb-1">
+                  <div class="card mb-3 mt-3" style="background-color: #d8f3dc;">
                             <div class="card-body">
                                 <span style="text-transform: capitalize;">Category : <%= question.category %></span>
                                 <span style="float: right;">
