@@ -90,23 +90,41 @@ footer {
   top: 50px;
 }
 .profile_pic img {
-  border-radius: 10%;
+  border-radius: 7%;
   width: 180px;
   height: 180px;
   object-fit: cover;
-  /* border: 3px solid black; */
-  /* box-shadow: 5px 5px #0096c7; */
 }
+
 .profile_pic img:hover {
   box-shadow: 5px 5px #caf0f8;
 }
 .upload {
-  top: -34px;
+  top: -40px;
   bottom: 0;
   position: relative;
   padding-left: 147px;
 }
-
+.user_profile p{ 
+  font-size: 25px;
+  color: #b7b7a4;
+}
+.user_profile button{
+  font-size:1rem;
+}
+.my_acc_body{
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.my_acc_body .card{
+  background-color: #f1faee;
+}
+.my_acc_body td{
+font-size: 18px;
+}
+.my_acc_body h4{
+  text-align: center;
+}
 /* user activity */
 #activity_head button{
   font-size: 1rem;
