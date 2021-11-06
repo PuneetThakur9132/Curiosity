@@ -45,20 +45,11 @@ footer {
 .body {
   background-color: #f1f2f2;
 }
-/* .openanswer {
-  background-color: #e7ebeb;
-}
-.openanswer:hover {
-  transform: scale(1.05);
-  color: #4895ef;
-} */
 
 .card {
   font-size: 20px;
 }
-.cards {
-  background-image: radial-gradient(white 70%, #caf0f8);
-}
+
 .card .cardbtn {
   background-color: #caf0f8;
   color: #1b4965;
@@ -96,7 +87,6 @@ footer {
 .profile_pic {
   margin: 5px auto;
   width: 100%;
-
   top: 50px;
 }
 .profile_pic img {
@@ -116,15 +106,4 @@ footer {
   position: relative;
   padding-left: 147px;
 }
-/* questionPage */
-/* .Quescard {
-  background-image: linear-gradient(white 70%, #e63946);
-} */
 
-.answercard {
-  height: 150px;
-}
-
-.askcard {
-  height: 150px;
-}
