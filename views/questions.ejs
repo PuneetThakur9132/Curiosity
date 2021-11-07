@@ -26,11 +26,8 @@
             <div class="card mt-4 mb-4">
             <div class="row ">
            <%stream = question.category%>
-           <div style="background-color: #62b6cb;" class="col-md-2">
-             <img " src="images/2327744-removebg-preview.png" alt="" class="img-fluid">
-
-           </div>
-    <div class=" col-md-10 cards  ">
+          
+    <div class=" col-md-12 cards  ">
       <div class=" card-body">
         <span style="float: right;"><%= question.createdAt.toLocaleDateString() %></span>
         <div class="card-title " ><h5 style="font-size:25px;"><%= question.statement%>?</h5> </div><hr>
@@ -41,7 +38,7 @@
           <button class="btn btn-danger">Delete</button>
       </form>
       <% } %> 
-        <a href="/questions/<%=question._id%>"><button style="float: right;" class="cardbtn mb-3">Read more</button></a>
+        <a href="/questions/<%=question._id%>"><button style="float: right;" class="cardbtn mb-3">View Solution</button></a>
       </div>
     </div>
   </div>

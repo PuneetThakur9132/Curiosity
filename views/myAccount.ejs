@@ -34,64 +34,26 @@
                         <input type="file" name="profilepic" id="actual-btn" hidden required>
                         <label for="actual-btn" id="from" style="cursor: pointer; color: black;"> <i class="fas fa-camera fa-2x"></i></label>
                        </form>
-
                 </div>
 
-
-                 
-            </div>
-            <div class="usename" style="text-transform: capitalize;">
+                </div>
+                <div class="username">
                     <span class="display-6"><b><%=profile.username%></b></span>
-                    <p><%=profile.intro%></p>
+                    <p ><%=profile.intro%></p>
+                </div>
             </div>
-        </div>
-    </div>  
+        </div>  
 </section>
+
 
 <section class="my_acc_body">
     <div class="container">
         <div class="row">
-            <div class="mdl-card">
-                <div class="card-body">
                     <div class="card">
                         <div class="card-body">
                             <table class="table table-hover">
                                 <thead>
-                                    <h4>Your Stats</h4>
-                                </thead>
-                                <hr>
-                                  <tbody>
-                                    <tr>
-                                      <td><b>Followers</b></td>
-                                      <td><b>Following</b></td>
-                                      <td><b>Answered</b></td>
-                                      <td><b>Asked</b></td>
-                                    </tr>
-                                    <tr>
-                                      <td><%=profile.followers%></td>
-                                      <td><%=profile.followings%></td>
-                                      <td><%=profile.answers%></td>
-                                      <td><%=profile.questions%></td>
-                                    </tr>
-                                  </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> 
-</section>
-<section class="my_acc_body">
-    <div class="container">
-        <div class="row">
-            <div class="mdl-card">
-                <div class="card-body">
-                    <div class="card">
-                        <div class="card-body">
-                            <table class="table table-hover">
-                                <thead>
-                                    <h4>About</h4>
+                                    <h4>My details</h4>
                                 </thead>
                                 <hr>
                                   <tbody>
@@ -112,8 +74,7 @@
                             </table>
                         </div>
                     </div>
-                </div>
-            </div>
+              
         </div>
     </div> 
 </section>
@@ -122,8 +83,37 @@
 <section class="my_acc_body">
     <div class="container">
         <div class="row">
-            <div class="mdl-card">
-                <div class="card-body">
+                    <div class="card">
+                        <div class="card-body">
+                            <table class="table table-hover">
+                                <thead>
+                                    <h4>My Stats</h4>
+                                </thead>
+                                <hr>
+                                  <tbody>
+                                    <tr>
+                                      <td><b>Followers</b></td>
+                                      <td><b>Following</b></td>
+                                      <td><b>Answered</b></td>
+                                      <td><b>Asked</b></td>
+                                    </tr>
+                                    <tr>
+                                      <td><%=profile.followers%></td>
+                                      <td><%=profile.followings%></td>
+                                      <td><%=profile.answers%></td>
+                                      <td><%=profile.questions%></td>
+                                    </tr>
+                                  </tbody>
+                            </table>
+                        </div>
+            </div>
+        </div>
+    </div> 
+</section>
+
+<section class="my_acc_body">
+    <div class="container">
+        <div class="row">
                     <div class="card">
                         <div class="card-body">
                             <div class="card-title"><h4>INFO</h4></div><hr>
@@ -133,8 +123,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div> 
     </section>
 
 

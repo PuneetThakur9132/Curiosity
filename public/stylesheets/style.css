@@ -45,20 +45,11 @@ footer {
 .body {
   background-color: #f1f2f2;
 }
-/* .openanswer {
-  background-color: #e7ebeb;
-}
-.openanswer:hover {
-  transform: scale(1.05);
-  color: #4895ef;
-} */
 
 .card {
   font-size: 20px;
 }
-.cards {
-  background-image: radial-gradient(white 70%, #caf0f8);
-}
+
 .card .cardbtn {
   background-color: #caf0f8;
   color: #1b4965;
@@ -96,35 +87,46 @@ footer {
 .profile_pic {
   margin: 5px auto;
   width: 100%;
-
   top: 50px;
 }
 .profile_pic img {
-  border-radius: 10%;
+  border-radius: 7%;
   width: 180px;
   height: 180px;
   object-fit: cover;
-  /* border: 3px solid black; */
-  /* box-shadow: 5px 5px #0096c7; */
 }
+
 .profile_pic img:hover {
   box-shadow: 5px 5px #caf0f8;
 }
 .upload {
-  top: -34px;
+  top: -40px;
   bottom: 0;
   position: relative;
   padding-left: 147px;
 }
-/* questionPage */
-/* .Quescard {
-  background-image: linear-gradient(white 70%, #e63946);
-} */
-
-.answercard {
-  height: 150px;
+.user_profile p{ 
+  font-size: 25px;
+  color: #b7b7a4;
 }
-
-.askcard {
-  height: 150px;
+.user_profile button{
+  font-size:1rem;
+}
+.my_acc_body{
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.my_acc_body .card{
+  background-color: #f1faee;
+}
+.my_acc_body td{
+font-size: 18px;
+}
+.my_acc_body h4{
+  text-align: center;
+}
+/* user activity */
+#activity_head button{
+  font-size: 1rem;
+  font-weight: bold;
 }

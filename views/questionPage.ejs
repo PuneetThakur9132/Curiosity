@@ -35,37 +35,26 @@
 <section class="container">
     <div class="container">
     
+<% if(question.answers.length === 0){ %>
+    <div class="no_qna">
+        <h3 class="display-4" style="text-align: center; margin-top: 10px;">Be the first to answer the  Question</h3>
+    </div>
 
-      <% if(question.answers.length === 0){ %>
-        <div class="no_qna">
-         <h3 class="display-4" style="text-align: center; margin-top: 10px;">Be the first to answer the  Question</h3>
-        </div>
-
-      <%} else {%>
+ <%} else {%>
        <% for(let answer of question.answers) { %>
-       <div class="card mt-4 mb-4">
-        <div class="row">
-          <div class="col-md-2">
-            <img src="/images/20944701.jpg" alt="" class="img-fluid">
-
-          </div>
-
-     <div class=" col-md-10 mb-3 mt-3 answercard">
-      <div class="card-body ">
-
+       <div class="card mt-4 mb-4" >
+       <div class="row" >
+       <div class=" col-md-12 mb-3 mt-3 answercard">
+       <div class="card-body ">
         
-        <span style="float: right;"><%= answer.createdAt.toLocaleDateString() %></span>
-        <div class="card-title " ><h5 style="font-size:16px;">Submitted By : <a class="cardanc" href="/PublicProfile/<%=answer.author._id%>"><%=answer.author.username %></a></h5> </div><hr>
-
-        <div class="card-title" style="color:#8ac926" ><h5 style="font-size:25px; font-weight: 900;"><%-answer.content%></h5> </div>
-        
-
+        <span style="float: right; color: #d8e2dc;"><%= answer.createdAt.toLocaleDateString() %></span>
+        <div class="card-title " ><h5 style="font-size:20px; color:#e63946;">Submitted By : <a class="cardanc" href="/PublicProfile/<%=answer.author._id%>"><%=answer.author.username %></a></h5> </div>
+        <div class="card-title"><p style="font-size:20px; font-weight: 700;"><%-answer.content%></p> </div>
         
       </div>
     </div>
   </div>
-
-       </div>
+</div>
   <% } %>
   <% } %>
 </div>
