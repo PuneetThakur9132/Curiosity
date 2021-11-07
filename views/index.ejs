@@ -19,8 +19,11 @@
            <h2><b>Welcome To Curiosity.</b></h2><br/>
            <h4>Free, Simple, Easy to Use Question Answer Platform<br/> for college students to clear their doubts.</h4>
   <br/>
-            <a href="/signup"> <button  class="btn btn-primary"> Sign up </button> </a>
+            <%if(!currentUser){%>
+                <a href="/signup"> <button  class="btn btn-primary"> Sign up </button> </a>
             <a href="/login"> <button class="btn btn-outline-primary"> Login </button> </a>
+
+            <%}%>
           </div>
         </div>
       </div>
