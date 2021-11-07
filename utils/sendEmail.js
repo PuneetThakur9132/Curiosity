@@ -13,7 +13,7 @@ module.exports = (email, text) => {
   });
 
   let mailOptions = {
-    from: "ankitsi9132@gmail.com",
+    from: "curiositymait@gmail.com",
     to: email,
     subject: "Email-verification",
 
