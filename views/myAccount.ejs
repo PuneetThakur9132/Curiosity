@@ -37,7 +37,7 @@
 
                 </div>
                 <div class="username">
-                    <span class="display-6"><b><%=profile.username%></b></span>
+                    <span class="display-6 "><b><%=profile.username%></b></span>
                     <p ><%=profile.intro%></p>
                 </div>
             </div>
@@ -97,10 +97,10 @@
                                       <td><b>Asked</b></td>
                                     </tr>
                                     <tr>
-                                      <td><%=profile.followers%></td>
-                                      <td><%=profile.followings%></td>
-                                      <td><%=profile.answers%></td>
-                                      <td><%=profile.questions%></td>
+                                      <td><span id="followers"><%=profile.followers%></span></td>
+                                      <td><span id="followings"><%=profile.followings%></span></td>
+                                      <td><span id="answered"><%=profile.answers%></span></td>
+                                      <td><span id="asked"><%=profile.questions%></span></td>
                                     </tr>
                                   </tbody>
                             </table>
@@ -111,17 +111,17 @@
 </section>
 
 <section class="my_acc_body">
-    <div class="container">
-        <div class="row">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="card-title"><h4>INFO</h4></div><hr>
-                            <canvas id="myChart"></canvas>
-                            </table>
+        <div class="container">
+            <div class="row chart">
+                        <div class="card" style="width: 50rem;">
+                            <div class="card-body">
+                                <div class="card-title"><h4>INFO</h4></div><hr>
+                                <canvas id="myChart"></canvas>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
     </section>
 
 

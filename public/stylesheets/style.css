@@ -89,9 +89,9 @@ footer {
   top: 50px;
 }
 .profile_pic img {
-  border-radius: 7%;
-  width: 180px;
-  height: 180px;
+  border-radius: 50%;
+  width: 210px;
+  height: 210px;
   object-fit: cover;
 }
 
@@ -104,50 +104,56 @@ footer {
   position: relative;
   padding-left: 147px;
 }
-.user_profile p{ 
+.user_profile p {
   font-size: 25px;
   color: #b7b7a4;
 }
-.user_profile button{
-  font-size:1rem;
+.user_profile button {
+  font-size: 1rem;
 }
-.my_acc_body{
+.my_acc_body {
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
-.my_acc_body .card{
+.my_acc_body .card {
   background-color: #f1faee;
 }
-.my_acc_body td{
-font-size: 18px;
+.my_acc_body td {
+  font-size: 18px;
 }
-.my_acc_body h4{
+.my_acc_body h4 {
   text-align: center;
 }
 /* user activity */
-#activity_head button{
+#activity_head button {
   font-size: 1rem;
   font-weight: bold;
 }
 
 /* Forgot Password */
-.forgotpassword .text{
+.forgotpassword .text {
   padding-top: 150px;
   padding-left: 3rem;
 }
-.forgotpassword h1{
+.forgotpassword h1 {
   font-size: 100px;
-  color:#03456b;
+  color: #03456b;
 }
-.forgotpassword label{
+.forgotpassword label {
   font-size: 20px;
 }
-.forgotpassword button{
-  float:right;
+.forgotpassword button {
+  float: right;
   border-radius: 15px;
 }
 
-.forgotpassword .emailaddress{
-  width:350px;
-  transition:.9;
+.forgotpassword .emailaddress {
+  width: 350px;
+  transition: 0.9;
+}
+
+.chart {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
