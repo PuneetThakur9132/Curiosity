@@ -4,6 +4,7 @@ const ExpressError = require("../utils/ExpressError");
 const catchAsync = require("../utils/catchAsync");
 const passport = require("passport");
 const signupValidator = require("../middleware/validators/signup");
+const changePasswordValidator = require("../middleware/validators/changePassword");
 const { isLoggedIn, isnotVerified } = require("../middleware/loginAuth");
 const authController = require("../controllers/auth");
 
@@ -45,7 +46,11 @@ router.post(
   catchAsync(authController.postResetPassword)
 );
 
-router.post("/changepassword", authController.postChangePassword);
+router.post(
+  "/changepassword",
+  changePasswordValidator,
+  authController.postChangePassword
+);
 
 router.get("/logout", authController.Logout);
 

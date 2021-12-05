@@ -106,6 +106,7 @@ module.exports.postNewAnswer = async (req, res) => {
 
   const updatedUser = await user.save();
   const updatedQuestion = await question.save();
+  req.flash("success", "Successfully added a answer");
   res.redirect(`/questions/${questionId}`);
 };
 

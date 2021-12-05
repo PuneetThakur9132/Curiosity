@@ -9,6 +9,8 @@ const { isLoggedIn } = require("../middleware/loginAuth");
 
 const newQuestionValidator = require("../middleware/validators/newQuestion");
 const getQuestionValidator = require("../middleware/validators/getQuestion");
+const editprofileValidator = require("../middleware/validators/editprofile");
+const editquestionValidator = require("../middleware/validators/editQuestion");
 const getHomePageValidator = require("../middleware/validators/getHome");
 const feedController = require("../controllers/feed");
 
@@ -68,6 +70,7 @@ router.get(
   "/home",
   isLoggedIn,
   getHomePageValidator,
+  editprofileValidator,
   catchAsync(feedController.getHomePage)
 );
 
@@ -80,6 +83,7 @@ router.get("/userActivity", isLoggedIn, catchAsync(feedController.getActivity));
 router.put(
   "/editquestion/:id",
   isLoggedIn,
+  editquestionValidator,
   catchAsync(feedController.putEditQuestion)
 );
 
