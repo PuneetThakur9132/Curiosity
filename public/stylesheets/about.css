@@ -60,3 +60,26 @@ footer {
   font-size: 30px;
   font-weight: 900;
 }
+
+@media (max-width: 991px) {
+  .intro .aboutIntro {
+    padding: 10px;
+    margin: 5px;
+  }
+}
+@media (max-width: 991px) {
+  .about_section img {
+    display: none;
+  }
+  .inner_container {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .about_section {
+    padding: 0;
+  }
+  .inner_container {
+    padding: 60px;
+  }
+}
