@@ -8,7 +8,7 @@
   
 <%-include("partials/flash.ejs") %>
 
-<section class="my_acc">
+<section class="my_acc_body">
     <div class="container">
         <div class="row">
             <div class="user_profile">
@@ -45,32 +45,36 @@
 </section>
 
 
-<section class="my_acc_body">
+<section class="my_acc_body ">
     <div class="container">
         <div class="row">
-                    <div class="card">
-                        <div class="card-body">
-                            <table class="table table-hover">
+                    <div class="card ">
+                        <div class="card-body ">
+                            <div style="overflow-x:auto;">
+                            <table class="table table-hover ">
                                 <thead>
                                     <h4>My details</h4>
                                 </thead>
                                 <hr>
-                                  <tbody>
-                                    <tr>
-                                      <td><b>Name</b></td>
-                                      <td><b><%=profile.username%></b></td>
-                                    </tr>
-                                    <tr>
-                                    <td><b>Stream</b></td>
-                                    <td><b><%=profile.branch%></b></td>
-                                    </tr>
-                                    <tr>
-                                        <td><b>Email</b></td>
-                                        <td><b><%=profile.email%></b></td>
-                                    </tr>
-                                    
-                                  </tbody>
+                               
+                                    <tbody>
+                                        <tr>
+                                          <td><b>Name</b></td>
+                                          <td><b><%=profile.username%></b></td></tr>
+                                        </tr>
+                                        <tr>
+                                        <td><b>Stream</b></td>
+                                        <td><b><%=profile.branch%></b></td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Email</b></td>
+                                            <td><b><%=profile.email%></b></td>
+                                        </tr>
+                                        
+                                      </tbody>
+                                
                             </table>
+                            </div>
                         </div>
                     </div>
               
@@ -79,31 +83,34 @@
 </section>
 
 
-<section class="my_acc_body">
+<section class="my_acc_body ">
     <div class="container">
         <div class="row">
-                    <div class="card">
-                        <div class="card-body">
-                            <table class="table table-hover">
-                                <thead>
-                                    <h4>My Stats</h4>
-                                </thead>
-                                <hr>
-                                  <tbody>
-                                    <tr>
-                                      <td><b>Followers</b></td>
-                                      <td><b>Following</b></td>
-                                      <td><b>Answered</b></td>
-                                      <td><b>Asked</b></td>
-                                    </tr>
-                                    <tr>
-                                      <td><span id="followers"><%=profile.followers%></span></td>
-                                      <td><span id="followings"><%=profile.followings%></span></td>
-                                      <td><span id="answered"><%=profile.answers%></span></td>
-                                      <td><span id="asked"><%=profile.questions%></span></td>
-                                    </tr>
-                                  </tbody>
-                            </table>
+                    <div class="card ">
+                        <div class="card-body ">
+                            <div style="overflow-x:auto;" >
+                                <table class="table table-hover">
+                                    <thead>
+                                        <h4>My Stats</h4>
+                                    </thead>
+                                    <hr>
+                                      <tbody>
+                                        <tr>
+                                          <td><b>Followers</b></td>
+                                          <td><b>Following</b></td>
+                                          <td><b>Answered</b></td>
+                                          <td><b>Asked</b></td>
+                                        </tr>
+                                        <tr>
+                                          <td><span id="followers"><%=profile.followers%></span></td>
+                                          <td><span id="followings"><%=profile.followings%></span></td>
+                                          <td><span id="answered"><%=profile.answers%></span></td>
+                                          <td><span id="asked"><%=profile.questions%></span></td>
+                                        </tr>
+                                      </tbody>
+                                </table>
+
+                            </div>
                         </div>
             </div>
         </div>
@@ -113,7 +120,7 @@
 <section class="my_acc_body">
         <div class="container">
             <div class="row chart">
-                        <div class="card" style="width: 50rem;">
+                        <div class="card " style="width: 50rem;">
                             <div class="card-body">
                                 <div class="card-title"><h4>INFO</h4></div><hr>
                                 <canvas id="myChart"></canvas>

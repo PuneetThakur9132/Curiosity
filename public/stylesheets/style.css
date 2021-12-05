@@ -11,6 +11,7 @@ body {
   flex-direction: column;
   height: 100vh;
 }
+
 .Welcome {
   font-size: 3rem;
 }
@@ -156,4 +157,16 @@ footer {
   width: 100%;
   display: flex;
   justify-content: center;
+}
+
+.content {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 573px) {
+  .my_acc_body {
+    margin: 20px;
+  }
 }
