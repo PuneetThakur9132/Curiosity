@@ -12,6 +12,7 @@ const getQuestionValidator = require("../middleware/validators/getQuestion");
 const editprofileValidator = require("../middleware/validators/editprofile");
 const editquestionValidator = require("../middleware/validators/editQuestion");
 const getHomePageValidator = require("../middleware/validators/getHome");
+const postNewAnswerValidator = require("../middleware/validators/postNewAnswer");
 const feedController = require("../controllers/feed");
 
 const { storage } = require("../cloudinary");
@@ -34,7 +35,12 @@ router.get(
   catchAsync(feedController.getQuestion)
 );
 
-router.post("/newanswer", isLoggedIn, catchAsync(feedController.postNewAnswer));
+router.post(
+  "/newanswer",
+  isLoggedIn,
+  postNewAnswerValidator,
+  catchAsync(feedController.postNewAnswer)
+);
 
 router.post(
   "/askquestion",
