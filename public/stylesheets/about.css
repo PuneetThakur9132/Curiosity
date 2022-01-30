@@ -44,16 +44,20 @@ footer {
 }
 
 .about_section img {
-  width: 80%;
+  width: 45%;
   height: auto;
-  margin-top: 5rem;
+  margin-top: 10px;
   background-color: #eee;
 }
 
-.about_section h1{
-  padding-top: 3rem;
-  padding-bottom:1rem;
-  font-size: 50px;
+.inner_container {
+  width: 55%;
+  float: right;
+  padding: 150px;
+}
+.inner-container h1 {
+  margin-bottom: 30px;
+  font-size: 30px;
   font-weight: 900;
 }
 
@@ -77,17 +81,5 @@ footer {
   }
   .inner_container {
     padding: 60px;
-  }
-}
-
-/* about page responsiveness */
-@media(max-width:768px){
-  .text{
-    order: 2;
-  }
-}
-@media(min-width:576px){
-  .text{
-    order: 2;
   }
 }

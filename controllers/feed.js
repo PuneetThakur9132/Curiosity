@@ -91,7 +91,7 @@ module.exports.postNewAnswer = async (req, res) => {
 
   const answer = await newAnswer.save();
   // console.log("answer..", answer);
-  //connecting docs
+
   const updatedAnswers = question.answers;
   updatedAnswers.push(answer);
   question.answers = updatedAnswers;
