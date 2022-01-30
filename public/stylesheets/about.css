@@ -44,42 +44,16 @@ footer {
 }
 
 .about_section img {
-  width: 45%;
+  width: 80%;
   height: auto;
-  margin-top: 10px;
+  margin-top: 5rem;
   background-color: #eee;
 }
 
-.inner_container {
-  width: 55%;
-  float: right;
-  padding: 150px;
-}
-.inner-container h1 {
-  margin-bottom: 30px;
-  font-size: 30px;
+.about_section h1{
+  padding-top: 3rem;
+  padding-bottom:1rem;
+  font-size: 50px;
   font-weight: 900;
 }
 
-@media (max-width: 991px) {
-  .intro .aboutIntro {
-    padding: 10px;
-    margin: 5px;
-  }
-}
-@media (max-width: 991px) {
-  .about_section img {
-    display: none;
-  }
-  .inner_container {
-    width: 100%;
-  }
-}
-@media screen and (max-width: 600px) {
-  .about_section {
-    padding: 0;
-  }
-  .inner_container {
-    padding: 60px;
-  }
-}
