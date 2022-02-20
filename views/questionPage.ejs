@@ -78,11 +78,10 @@
         ></button>
       </div>
       <div class="modal-body">
-        <form  action="/newanswer" method="POST">
-          //code for editor
+        <form method="POST" action="/newanswer">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mb-4">
                 <textarea name="answer"></textarea>
-            <input type="hidden" name="questionId" value="<%=question._id%>" />
+            <input type="hidden" name="questionId" value="<%= question._id %>" />
           </div>
           <button type="submit" value="submit" class="btn btn-primary" style="float: right;">Add Answer</button>
     </form>

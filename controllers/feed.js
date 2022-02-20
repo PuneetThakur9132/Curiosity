@@ -71,12 +71,13 @@ module.exports.getQuestion = async (req, res) => {
     req.flash("error", "Cannot find the question");
     return res.redirect("/questions");
   }
-  console.log(question);
   res.render("questionPage", { question });
 };
 
-module.exports.postNewAnswer = async (req, res) => {
-  const userId = req.user._id;
+module.exports.postNewAnswer = async (req, res , next) => {
+  
+  console.log("************************");
+   const userId = req.user._id;
   const user = await User.findById(userId);
   const answerContent = req.body.answer;
   const questionId = req.body.questionId;
@@ -90,7 +91,8 @@ module.exports.postNewAnswer = async (req, res) => {
   });
 
   const answer = await newAnswer.save();
-  // console.log("answer..", answer);
+  console.log("****************");
+  console.log(answerContent);
 
   const updatedAnswers = question.answers;
   updatedAnswers.push(answer);
@@ -108,6 +110,7 @@ module.exports.postNewAnswer = async (req, res) => {
   const updatedQuestion = await question.save();
   req.flash("success", "Successfully added a answer");
   res.redirect(`/questions/${questionId}`);
+ 
 };
 
 module.exports.postAskQuestion = async (req, res) => {
