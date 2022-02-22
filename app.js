@@ -1,7 +1,10 @@
 // ************ NPM MODULES **********//
 
 // this line means if we are in development mode , them process.env should be available on our node app
-require("dotenv").config();
+if(process.env.NODE_ENV !== "production"){
+  require("dotenv").config();
+}
+
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
@@ -17,6 +20,8 @@ const Answer = require("./models/answer");
 const ExpressError = require("./utils/ExpressError");
 const feedRoutes = require("./routes/feed");
 const authRoutes = require("./routes/auth");
+const MongoStore = require('connect-mongo')(session);
+const dbUrl = "mongodb://localhost:27017/Curiosity";
 
 // Passport configuring
 
@@ -25,7 +30,7 @@ const LocalStrategy = require("passport-local");
 const User = require("./models/user");
 
 //****** CONNECTING DATABASE****** //
-mongoose.connect("mongodb://localhost:27017/Curiosity", {
+mongoose.connect(dbUrl, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -46,7 +51,19 @@ app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "public"))); // for serving static assets
 
 // configuring session
+const store =  new MongoStore({
+  url:dbUrl,
+  secret: "thisshouldbeabettersecret!",
+  touchAfter:24*60*60
+})
+
+store.on("error",function(e){
+  console.log("SESSION STORE ERROR",e);
+})
+
 const sessionConfig = {
+  store,
+  name:'session',
   secret: "thisshouldbeabettersecret!",
   resave: false,
   saveUninitialized: true,
