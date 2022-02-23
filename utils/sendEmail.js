@@ -5,7 +5,7 @@ const log = console.log;
 
 module.exports = (email, text) => {
   let transporter = nodemailer.createTransport({
-    service: "hotmail",
+    service: "gmail",
     auth: {
       user: process.env.EMAIL,
       pass: process.env.PASSWORD,
@@ -13,7 +13,7 @@ module.exports = (email, text) => {
   });
 
   let mailOptions = {
-    from: "curiositymait@hotmail.com",
+    from: "curiositymait@gmail.com",
     to: email,
     subject: "Email-verification",
 
