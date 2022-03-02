@@ -57,7 +57,7 @@ module.exports = (id, token) => {
                 <div  style=" color:#00b2ca; font-weight:bold;text-align:center; padding: 5% 0%">
                   click below to verify<br/>
                   <br/>
-                  <a href="http://localhost:3000/reset-password/${id}/${token}"><button class="btn btn-primary">Reset</button></a>
+                  <a href="https://mycuriosity.herokuapp.com/reset-password/${id}/${token}"><button class="btn btn-primary">Reset</button></a>
                 </div>
       
         </section>

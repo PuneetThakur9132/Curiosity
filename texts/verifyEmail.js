@@ -58,7 +58,7 @@ module.exports = (token) => {
               <div  style=" color:#00b2ca; font-weight:bold;text-align:center; padding: 5% 0%">
                 click below to verify<br/>
                 <br/>
-                <a href="http://localhost:3000/verify-email?token=${token}"><button class="btn btn-primary">Verify Account </button></a>
+                <a href="https://mycuriosity.herokuapp.com/verify-email?token=${token}"><button class="btn btn-primary">Verify Account </button></a>
               </div>
     
       </section>
