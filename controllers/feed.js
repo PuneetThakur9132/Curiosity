@@ -150,7 +150,7 @@ module.exports.getProfile = async (req, res, next) => {
       followings: user.followings.length,
       answeredQuestions: user.answeredQuestions.length,
     };
-    res.render("myaccount", { profile });
+    res.render("myAccount", { profile });
   } catch (err) {
     next(err);
   }
